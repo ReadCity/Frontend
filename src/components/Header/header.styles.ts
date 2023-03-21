@@ -14,7 +14,9 @@ export const StyledMainPageLink = styled.a``;
 
 export const StyledSiteLogo = styled.img.attrs({
     className: "w-[90px] h-[35px] mr-8 md:w-[118px]",
-})``;
+})`
+    object-fit:cover;
+`;
 
 export const StyledHeaderSocialMedia = styled(motion.ul).attrs({
     className: "hidden items-center gap-[10px] md:flex",

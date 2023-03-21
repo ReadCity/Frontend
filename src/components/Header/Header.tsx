@@ -1,6 +1,6 @@
 import { StyledContainer } from "@src/styles/globals";
 import StyledHeader, { StyledHeaderInner, StyledHeaderSocialItem, StyledHeaderSocialLink, StyledHeaderSocialLogo, StyledHeaderSocialMedia, StyledHeaderWrapper, StyledMainPageLink, StyledSiteLogo } from "./header.styles";
-import SiteLogo from "/site-logo.svg";
+import ReadLogo from "/read.png";
 import facebookLogo from "/social/facebook.svg";
 import twitterLogo from "/social/twitter.svg";
 import linkedinLogo from "/social/facebook.svg";
@@ -16,7 +16,7 @@ export default function Header() {
                 <StyledHeaderWrapper>
                     <StyledHeaderInner>
                         <StyledMainPageLink>
-                            <StyledSiteLogo src={SiteLogo} width={90} height={40} alt="Read books" />
+                            <StyledSiteLogo src={ReadLogo} width={90} height={40} alt="Read books" />
                         </StyledMainPageLink>
 
                         <StyledHeaderSocialMedia>
