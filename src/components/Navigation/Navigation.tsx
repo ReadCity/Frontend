@@ -3,13 +3,13 @@ import StyledNav, { StyledNavItem, StyledNavLink, StyledNavList } from "./naviga
 import useNavStore from "@src/features";
 
 export default function Navigation() {
-  const { display, toggleDisplay } = useNavStore();
+  const { display, toggleDisplay, changeDisplay } = useNavStore();
 
   return (
     <StyledNav aria-hidden={display}>
       <StyledNavList>
         {navLinks.map(link => (
-          <StyledNavItem onClick={() => toggleDisplay()} key={link.to}>
+          <StyledNavItem onClick={() => changeDisplay(true)} key={link.to}>
             <StyledNavLink to={link.to}>
               {link.title}
             </StyledNavLink>

@@ -1,8 +1,7 @@
-import useNavStore from "@src/features";
-import { StyledPageDescription, StyledPageTitle } from "@components/Hero/hero.styles";
-import { StyledContainer, StyledDiv, StyledImg, StyledTextContainer } from "@styles/globals";
 import { useLocation } from "react-router-dom";
 import { BookTypes } from "@src/types/book";
+import { StyledPageDescription, StyledPageTitle } from "@components/Hero/hero.styles";
+import { StyledContainer, StyledDiv, StyledImg, StyledTextContainer } from "@styles/globals";
 import { StyledButton, StyledTwoCols } from "@src/styles/components";
 import { StyledBookInfoText, StyledBookInfoTitle, StyledBookInfoWrapper, StyledSingleBook } from "./single-book.styles";
 
@@ -12,7 +11,7 @@ export default function SingleBook() {
     return (
         <StyledSingleBook>
             <StyledContainer>
-                <StyledTwoCols>
+                <StyledTwoCols gap="2rem">
                     <StyledTextContainer className="grid items-center justify-center place-content-center" margin="0" maxWidth="520px">
                         <StyledPageTitle>
                             {title}
@@ -20,7 +19,7 @@ export default function SingleBook() {
                         <StyledPageDescription>
                             {desc}
                         </StyledPageDescription>
-                        
+
                         <StyledDiv className="flex gap-4 items-center  mb-10">
                             <StyledBookInfoWrapper>
                                 <StyledBookInfoTitle>

@@ -24,7 +24,7 @@ function App() {
               <Route path="books" element={<Book />}>
                 <Route index element={<BookList />} />
               </Route>
-              <Route path="/book/:id" element={<SingleBook />} />
+              <Route path="/books/:id" element={<SingleBook />} />
             </Route>
           </Routes>
         </AnimatePresence>

@@ -1,6 +1,4 @@
-import { lazy } from "react";
-
-const ReusableHero = lazy(() => import("@components/ReusableHero"));
+import ReusableHero from "@src/components/ReusableHero";
 
 export default function Services() {
     return (
