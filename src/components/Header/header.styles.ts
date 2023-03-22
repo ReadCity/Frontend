@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledHeader = styled.header.attrs({ className: "relative py-10 bg-myPrimary-100" })`
@@ -10,7 +11,7 @@ export const StyledHeaderWrapper = styled.div.attrs({
 `;
 export const StyledHeaderInner = styled.div.attrs({ className: "flex items-center" })``;
 
-export const StyledMainPageLink = styled.a``;
+export const StyledMainPageLink = styled(Link)``;
 
 export const StyledSiteLogo = styled.img.attrs({
     className: "w-[90px] h-[35px] mr-8 md:w-[118px]",

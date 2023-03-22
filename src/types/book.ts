@@ -9,3 +9,6 @@ export type BookTypes = {
     release_year: number;
     id: number;
 };
+export type Author = {
+    
+}

@@ -322,11 +322,19 @@ html {
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+    
     height: 100%;
     margin: 0;
     font-family: "Roboto", sans-serif;
+}
+
+#root,.App{
+    height: 100%;
+}
+
+.App{
+    display: flex;
+    flex-direction: column;
 }
 
 h1,
@@ -378,6 +386,7 @@ label {
 
 .site-main {
     flex-grow: 1;
+    background-color: #fff;
 }
 `;
 
@@ -392,24 +401,28 @@ export const StyledTextContainer = styled.div<StyledTextContainerTypes>`
 `;
 export const StyledSectionTitle = styled.h2.attrs({
     className:
-        "mb-12 font-bold text-[50px] leading-[110%] text-center tracking-[-0.02em] text-white font-bungee",
+        "mb-8 font-bold text-[50px] leading-[110%] text-center tracking-[-0.02em] font-bungee",
 })``;
 export const StyledSectionText = styled.p.attrs({
     className:
         "text-[19px] leading-[180%] text-center tracking-[-0.01em] text-[#B4C7E7]",
 })``;
 export const StyledUnderline = styled.div.attrs({
-    className: "w-[55px] h-[1px] bg-mySecondary-100",
+    className: "w-[100px] h-[3px] bg-mySecondary-100",
 })``;
 export const StyledDiv = styled.div``;
+export const StyledList = styled.ul``;
+export const StyledLink = styled.a``;
+export const StyledStrong = styled.strong``;
+export const StyledLogoImg = styled.img``;
 export const StyledSection = styled(motion.section).attrs({
-    className: "relative py-12 px-8 text-white bg-myPrimary-100",
+    className: "relative py-12 px-8 text-white bg-white",
 })``;
 export const StyledImg = styled(motion.img).attrs({
     className: "max-w-full",
 })<StyledImgTypes>`
-    width:100%;
-    object-fit:contain;
+    width: 100%;
+    object-fit: contain;
     height: ${(props) => props.height + "px"};
 `;
 export default GlobalStyles;

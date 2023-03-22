@@ -20,7 +20,7 @@ export default function SingleBook() {
                             {desc}
                         </StyledPageDescription>
 
-                        <StyledDiv className="flex gap-4 items-center  mb-10">
+                        <StyledDiv className="grid gap-3 sm:flex md:gap-4 lg:gap-8 items-center  mb-10">
                             <StyledBookInfoWrapper>
                                 <StyledBookInfoTitle>
                                     Pages
