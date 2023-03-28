@@ -18,7 +18,7 @@ export default function BookItem({ desc, img, price, title, id, author, pages, r
       <StyledBookItemCover src={img} width={300} height={400} loading="lazy" alt={img} />
       <StyledDiv className="flex justify-between items-center gap-4 mb-3">
         <StyledBookItemTitle>
-          <StyledBookItemLink to={`/book/${id}`} state={
+          <StyledBookItemLink to={`/books/${id}`} state={
             {
               desc, img, price, title, id, author, pages, rating, release_year
             }

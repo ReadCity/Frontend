@@ -7,13 +7,15 @@ import { StyledBookInfoText, StyledBookInfoTitle, StyledBookInfoWrapper, StyledS
 
 export default function SingleBook() {
     const { state } = useLocation();
-    const { author, desc, id, img, pages, price, rating, release_year, title }: BookTypes = state;
+    const { desc, img, pages, rating, title }: BookTypes = state;
     return (
         <StyledSingleBook>
             <StyledContainer>
                 <StyledTwoCols gap="2rem">
                     <StyledTextContainer className="grid items-center justify-center place-content-center" margin="0" maxWidth="520px">
-                        <StyledPageTitle>
+                        <StyledPageTitle style={{
+                            color: "white"
+                        }}>
                             {title}
                         </StyledPageTitle>
                         <StyledPageDescription>

@@ -8,11 +8,11 @@ export const StyledBookItemCover = styled(motion.img).attrs({
 })``;
 export const StyledBookItemTitle = styled(motion.h3).attrs({
     className:
-        "font-bold text-[2rem] leading-[120%] tracking-[-0.02em] text-myPrimary-100",
+        "font-bold leading-[120%] tracking-[-0.02em] text-myPrimary-100",
 })``;
 export const StyledBookItemLink = styled(Link).attrs({
     className:
-        "font-bold text-[2rem] leading-[120%] tracking-[-0.02em] text-myPrimary-100",
+        "font-bold text-[1.2rem] md:text-[2rem] leading-[120%] tracking-[-0.02em] text-myPrimary-100",
 })``;
 export const StyledBookItemPrice = styled(motion.p).attrs({
     className:

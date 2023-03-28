@@ -2,18 +2,18 @@ import { motion } from "framer-motion";
 import styled, { createGlobalStyle } from "styled-components";
 
 type StyledTextContainerTypes = {
-    maxWidth: string;
-    margin: string;
+  maxWidth: string;
+  margin: string;
 };
 
 type StyledImgTypes = {
-    width?: number;
-    height: number;
+  width?: number;
+  height: number;
 };
 
 export const COLORS = {
-    primary: "#1B3764",
-    secondary: "#FFCA42",
+  primary: "#1B3764",
+  secondary: "#FFCA42",
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -391,24 +391,24 @@ label {
 `;
 
 export const StyledContainer = styled.div.attrs({
-    className: "container w-[unset] mx-auto px-[20px]",
+  className: "container w-[unset] mx-auto px-[20px]",
 })``;
 export const StyledMain = styled.main.attrs({ className: "site-main" })``;
 export const StyledApp = styled.div.attrs({ className: "App" })``;
 export const StyledTextContainer = styled.div<StyledTextContainerTypes>`
-    max-width: ${(props) => props.maxWidth};
-    margin: ${(props) => props.margin};
+  max-width: ${(props) => props.maxWidth};
+  margin: ${(props) => props.margin};
 `;
 export const StyledSectionTitle = styled.h2.attrs({
-    className:
-        "mb-8 font-bold text-[50px] leading-[110%] text-center tracking-[-0.02em] font-bungee",
+  className:
+    "mb-8 font-bold text-[50px] leading-[110%] text-center tracking-[-0.02em] font-bungee",
 })``;
 export const StyledSectionText = styled.p.attrs({
-    className:
-        "text-[19px] leading-[180%] text-center tracking-[-0.01em] text-[#B4C7E7]",
+  className:
+    "text-[19px] leading-[180%] text-center tracking-[-0.01em] text-[#B4C7E7]",
 })``;
 export const StyledUnderline = styled.div.attrs({
-    className: "w-[100px] h-[3px] bg-mySecondary-100",
+  className: "w-[100px] h-[3px] bg-mySecondary-100",
 })``;
 export const StyledDiv = styled.div``;
 export const StyledList = styled.ul``;
@@ -416,13 +416,20 @@ export const StyledLink = styled.a``;
 export const StyledStrong = styled.strong``;
 export const StyledLogoImg = styled.img``;
 export const StyledSection = styled(motion.section).attrs({
-    className: "relative py-12 px-8 text-white bg-white",
+  className: "relative py-12 px-8 text-white bg-white",
 })``;
 export const StyledImg = styled(motion.img).attrs({
-    className: "max-w-full",
+  className: "max-w-full",
 })<StyledImgTypes>`
-    width: 100%;
-    object-fit: contain;
-    height: ${(props) => props.height + "px"};
+  width: 100%;
+  object-fit: contain;
+  height: ${(props) => props.height + "px"};
+`;
+export const Col2 = styled.div`
+  min-height: 100vh;
+  display: grid;
+  @media screen and (min-width: 968px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 export default GlobalStyles;

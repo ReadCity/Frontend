@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const StyledSingleBook = styled(motion.section).attrs({
-    className: "relative py-6 pb-[93px] bg-myPrimary-100",
+    className: "relative mb-12 py-6 pb-[93px] bg-myPrimary-100",
 })``;
 
 export const StyledBookInfoWrapper = styled(motion.div).attrs({

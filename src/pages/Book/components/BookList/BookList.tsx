@@ -1,5 +1,7 @@
 import { BookTypes as Book } from "@src/types/book";
 import { StyledSection, StyledContainer } from "@styles/globals"
+import axios from "axios";
+import { useEffect, useState } from "react";
 import BookItem from "../BookItem";
 import StyledBookList from "./booklist.styles";
 
@@ -62,13 +64,21 @@ const books: Book[] = [
 ];
 
 export default function BookList() {
+  const [fakeBooks, setFakeBooks] = useState<Book[]>([]);
+  useEffect(() => {
+    async function getFakeBooks() {
+      const fakeBooksFromApi = await (await axios.get("https://api.npoint.io/77a459d56809ff27e9a0")).data;
+      setFakeBooks(fakeBooksFromApi);
+    };
+    getFakeBooks();
+  }, []);
   return (
     <StyledSection style={{
       backgroundColor: "#fff"
     }}>
       <StyledContainer>
         <StyledBookList>
-          {books.map(book => (
+          {fakeBooks?.map(book => (
             <BookItem key={book.id} {...book} />
           ))}
         </StyledBookList>
