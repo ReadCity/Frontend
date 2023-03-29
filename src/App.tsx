@@ -3,6 +3,8 @@ import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import RootLayout from "@layouts/root";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Loader from "./components/Loader";
 const Home = lazy(() => import("@pages/Home"));
 const Services = lazy(() => import("@pages/Services"));
 const About = lazy(() => import("@pages/About"));
@@ -14,26 +16,30 @@ const AddNewBook = lazy(() => import("@pages/Admin").then(module => ({ default: 
 const AddNewAuthor = lazy(() => import("@pages/Admin").then(module => ({ default: module.NewAuthor })));
 function App() {
 
+  const queryClient = new QueryClient();
+
   return (
     <StyledApp>
-      <Suspense>
-        <AnimatePresence mode="wait">
-          <Routes>
-            <Route element={<RootLayout />}>
-              <Route path="/" element={<Home />} />
-              <Route path="about" element={<About />} />
-              <Route path="services" element={<Services />} />
-              <Route path="books" element={<Book />}>
-                <Route index element={<BookList />} />
+      <Suspense fallback={<Loader />}>
+        <AnimatePresence mode="wait" key={crypto.randomUUID()}>
+          <QueryClientProvider client={queryClient}>
+            <Routes>
+              <Route element={<RootLayout />} >
+                <Route path="/" element={<Home />} />
+                <Route path="about" element={<About />} />
+                <Route path="services" element={<Services />} />
+                <Route path="books" element={<Book />}>
+                  <Route index element={<BookList />} />
+                </Route>
+                <Route path="/books/:id" element={<SingleBook />} />
+                <Route path="*" element={<NotFound />} />
               </Route>
-              <Route path="/books/:id" element={<SingleBook />} />
               <Route path="/admin">
                 <Route path="authors/new" element={<AddNewAuthor />} />
                 <Route path="books/new" element={<AddNewBook />} />
               </Route>
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
+            </Routes>
+          </QueryClientProvider>
         </AnimatePresence>
       </Suspense>
     </StyledApp>
