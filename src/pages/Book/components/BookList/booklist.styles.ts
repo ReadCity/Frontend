@@ -3,6 +3,6 @@ import styled from "styled-components";
 
 const StyledBookList = styled(motion.ul).attrs({
     className:
-        "grid grid-cols-[repeat(auto-fit,min(401px,90%))] justify-center place-content-center gap-x-16 gap-y-8",
+        "grid grid-cols-[repeat(auto-fit,min(380px,90%))] justify-center place-content-center gap-x-8 gap-y-32 lg:gap-x-12 xl:gap-x-32",
 })``;
 export default StyledBookList;

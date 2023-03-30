@@ -4,12 +4,17 @@ import { StyledPageDescription, StyledPageTitle } from "@components/Hero/hero.st
 import { StyledContainer, StyledDiv, StyledImg, StyledTextContainer } from "@styles/globals";
 import { StyledButton, StyledTwoCols } from "@src/styles/components";
 import { StyledBookInfoText, StyledBookInfoTitle, StyledBookInfoWrapper, StyledSingleBook } from "./single-book.styles";
-
+import { Helmet } from "react-helmet";
 export default function SingleBook() {
     const { state } = useLocation();
     const { desc, img, pages, rating, title }: BookTypes = state;
+
     return (
         <StyledSingleBook>
+            <Helmet>
+                <title>{title}</title>
+                <meta name="description" content={desc} />
+            </Helmet>
             <StyledContainer>
                 <StyledTwoCols gap="2rem">
                     <StyledTextContainer className="grid items-center justify-center place-content-center" margin="0" maxWidth="520px">

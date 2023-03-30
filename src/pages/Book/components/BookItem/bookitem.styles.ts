@@ -2,10 +2,12 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const StyledBookItem = styled(motion.li).attrs({ className: "grid" })``;
+const StyledBookItem = styled(motion.li).attrs({ className: "flex flex-col justify-between" })``;
 export const StyledBookItemCover = styled(motion.img).attrs({
     className: "w-[300] h-[400px] mx-auto mb-8 shadow-lg px-6 py-6 rounded-lg",
-})``;
+})`
+    
+`;
 export const StyledBookItemTitle = styled(motion.h3).attrs({
     className:
         "font-bold leading-[120%] tracking-[-0.02em] text-myPrimary-100",

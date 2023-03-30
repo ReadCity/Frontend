@@ -10,9 +10,9 @@ import StyledHeader, {
     StyledSiteLogo,
 } from "./header.styles";
 import ReadLogo from "/read.png";
-import facebookLogo from "/social/facebook.svg";
-import twitterLogo from "/social/twitter.svg";
-import linkedinLogo from "/social/facebook.svg";
+import TelegramLogo from "/social/telegram.svg";
+import InstaLogo from "/social/insta.svg";
+import YoutubeLogo from "/social/youtube.svg";
 import { lazy } from "react";
 
 const Hamburger = lazy(() => import("@components/Hamburger"));
@@ -36,40 +36,40 @@ export default function Header() {
                         <StyledHeaderSocialMedia>
                             <StyledHeaderSocialItem>
                                 <StyledHeaderSocialLink
-                                    href="https://facebook.com"
+                                    href="https://telegram.org"
                                     target="blank"
                                 >
                                     <StyledHeaderSocialLogo
                                         width={10}
-                                        src={facebookLogo}
+                                        src={TelegramLogo}
                                         height={20}
-                                        alt="Our Facebook"
+                                        alt="Our Telegram"
                                     />
                                 </StyledHeaderSocialLink>
                             </StyledHeaderSocialItem>
                             <StyledHeaderSocialItem>
                                 <StyledHeaderSocialLink
-                                    href="https://twitter.com"
+                                    href="https://youtube.com"
                                     target="blank"
                                 >
                                     <StyledHeaderSocialLogo
                                         width={10}
-                                        src={twitterLogo}
+                                        src={YoutubeLogo}
                                         height={20}
-                                        alt="Our Twitter"
+                                        alt="Our youtube"
                                     />
                                 </StyledHeaderSocialLink>
                             </StyledHeaderSocialItem>
                             <StyledHeaderSocialItem>
                                 <StyledHeaderSocialLink
-                                    href="https://linkedin.com"
+                                    href="https://instagram.com"
                                     target="blank"
                                 >
                                     <StyledHeaderSocialLogo
                                         width={10}
-                                        src={linkedinLogo}
+                                        src={InstaLogo}
                                         height={20}
-                                        alt="Our LinkedIn"
+                                        alt="Our Instagram"
                                     />
                                 </StyledHeaderSocialLink>
                             </StyledHeaderSocialItem>

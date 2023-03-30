@@ -6,10 +6,10 @@ const StyledHeader = styled.header.attrs({ className: "relative py-10 bg-myPrima
 `;
 
 export const StyledHeaderWrapper = styled.div.attrs({
-    className: "flex items-center justify-between",
+    className: "flex items-center justify-between gap-4",
 })`
 `;
-export const StyledHeaderInner = styled.div.attrs({ className: "flex items-center" })``;
+export const StyledHeaderInner = styled.div.attrs({ className: "flex items-center md:gap-12 lg:gap-20 xl:gap-32 2xl:gap-[30rem]" })``;
 
 export const StyledMainPageLink = styled(Link)``;
 
@@ -20,7 +20,7 @@ export const StyledSiteLogo = styled.img.attrs({
 `;
 
 export const StyledHeaderSocialMedia = styled(motion.ul).attrs({
-    className: "hidden items-center gap-[10px] md:flex",
+    className: " items-center gap-[10px] flex",
 })``;
 
 export const StyledHeaderSocialItem = styled(motion.li).attrs({
