@@ -30,6 +30,8 @@ export default function Header() {
                                 width={90}
                                 height={40}
                                 alt="Read books"
+                                loading="lazy"
+                                title="Readcity.uz's logo"
                             />
                         </StyledMainPageLink>
 
@@ -44,6 +46,7 @@ export default function Header() {
                                         src={TelegramLogo}
                                         height={20}
                                         alt="Our Telegram"
+                                        loading="lazy"
                                     />
                                 </StyledHeaderSocialLink>
                             </StyledHeaderSocialItem>
@@ -57,6 +60,8 @@ export default function Header() {
                                         src={YoutubeLogo}
                                         height={20}
                                         alt="Our youtube"
+                                        loading="lazy"
+
                                     />
                                 </StyledHeaderSocialLink>
                             </StyledHeaderSocialItem>
@@ -70,6 +75,7 @@ export default function Header() {
                                         src={InstaLogo}
                                         height={20}
                                         alt="Our Instagram"
+                                        loading="lazy"
                                     />
                                 </StyledHeaderSocialLink>
                             </StyledHeaderSocialItem>
