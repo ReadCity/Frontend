@@ -16,7 +16,6 @@ interface Book {
     img: string;
     title: string;
     price: number;
-    desc: string;
     pages: number;
     rating: number;
     category: Category["id"];

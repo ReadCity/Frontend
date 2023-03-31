@@ -4,23 +4,23 @@ import { BookTypes as Book } from "@src/types/book";
 import { useNavigate } from "react-router-dom";
 import StyledBookItem, { StyledBookItemCover, StyledBookItemDescription, StyledBookItemLink, StyledBookItemPrice, StyledBookItemTitle } from "./bookitem.styles";
 
-export default function BookItem({ desc, img, price, title, id, author, pages, rating, release_year }: Book) {
+export default function BookItem({ description, img, price, title, id, author, pages, rating, release_year }: Book) {
   const navigate = useNavigate();
   function handleBookItemClick() {
     navigate(`/books/${id}`, {
       state: {
-        desc, img, price, title, id, author, pages, rating, release_year
+        description, price, title, id, author, pages, rating, release_year
       }
     })
   }
   return (
     <StyledBookItem>
-      <StyledBookItemCover src={img} width={300} height={400} loading="lazy" alt={img} />
-      <StyledDiv className="flex justify-between items-center gap-4 mb-3">
+      <StyledBookItemCover src={`https://ik.imagekit.io/khaitbek/Pictures/${id}.jpg`} placeholder={`https://ik.imagekit.io/khaitbek/Pictures/${id}.jpg?tr=bl-10`} width={300} height={400} loading="lazy" alt={img} />
+      <StyledDiv className="flex justify-between gap-4 mt-8 mb-3">
         <StyledBookItemTitle>
           <StyledBookItemLink to={`/books/${id}`} state={
             {
-              desc, img, price, title, id, author, pages, rating, release_year
+              description, img, price, title, id, author, pages, rating, release_year
             }
           }>
             {title}
@@ -31,7 +31,7 @@ export default function BookItem({ desc, img, price, title, id, author, pages, r
         </StyledBookItemPrice>
       </StyledDiv>
       <StyledBookItemDescription>
-        {desc}
+        {description}
       </StyledBookItemDescription>
       <StyledButton onClick={() => handleBookItemClick()} colorScheme="outlined" variant="small">
         Order

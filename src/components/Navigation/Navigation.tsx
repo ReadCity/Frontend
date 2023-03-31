@@ -10,7 +10,7 @@ export default function Navigation() {
       <StyledNavList>
         {navLinks.map(link => (
           <StyledNavItem onClick={() => changeDisplay(true)} key={link.to}>
-            <StyledNavLink to={link.to}>
+            <StyledNavLink aria-hidden={display} to={link.to}>
               {link.title}
             </StyledNavLink>
           </StyledNavItem>
