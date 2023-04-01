@@ -7,13 +7,13 @@ import { StyledBookInfoText, StyledBookInfoTitle, StyledBookInfoWrapper, StyledS
 import { Helmet } from "react-helmet";
 export default function SingleBook() {
     const { state } = useLocation();
-    const { desc, img, pages, rating, title }: BookTypes = state;
+    const { description, img, pages, rating, title,id }: BookTypes = state;
 
     return (
         <StyledSingleBook>
             <Helmet>
                 <title>{title}</title>
-                <meta name="description" content={desc} />
+                <meta name="description" content={description} />
             </Helmet>
             <StyledContainer>
                 <StyledTwoCols gap="2rem">
@@ -24,7 +24,7 @@ export default function SingleBook() {
                             {title}
                         </StyledPageTitle>
                         <StyledPageDescription>
-                            {desc}
+                            {description}
                         </StyledPageDescription>
 
                         <StyledDiv className="grid gap-3 sm:flex md:gap-4 lg:gap-8 items-center  mb-10">
@@ -51,7 +51,7 @@ export default function SingleBook() {
                             </StyledButton>
                         </StyledDiv>
                     </StyledTextContainer>
-                    <StyledImg src={img} width={300} height={500} loading="lazy" alt={desc} />
+                    <StyledImg src={`https://ik.imagekit.io/khaitbek/Pictures/${id}.jpg`} width={300} height={500} loading="lazy" alt={description} />
                 </StyledTwoCols>
             </StyledContainer>
         </StyledSingleBook>

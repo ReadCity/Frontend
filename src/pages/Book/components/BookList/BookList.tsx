@@ -35,7 +35,6 @@ export default function BookList() {
 }
 
 function Books({ books }: { books: Book[] }) {
-
   return (
     <>
       {books?.map(book => <BookItem key={book.id} {...book} />)}

@@ -9,7 +9,7 @@ import StyledHeader, {
     StyledMainPageLink,
     StyledSiteLogo,
 } from "./header.styles";
-import ReadLogo from "/read.png";
+import ReadLogo from "/read.webp";
 import TelegramLogo from "/social/telegram.svg";
 import InstaLogo from "/social/insta.svg";
 import YoutubeLogo from "/social/youtube.svg";
@@ -30,7 +30,7 @@ export default function Header() {
                                 width={90}
                                 height={40}
                                 alt="Read books"
-                                loading="lazy"
+                                loading="eager"
                                 title="Readcity.uz's logo"
                             />
                         </StyledMainPageLink>
@@ -46,7 +46,8 @@ export default function Header() {
                                         src={TelegramLogo}
                                         height={20}
                                         alt="Our Telegram"
-                                        loading="lazy"
+                                        loading="eager"
+                                        title="Readcity.uz's Telegram"
                                     />
                                 </StyledHeaderSocialLink>
                             </StyledHeaderSocialItem>
@@ -60,8 +61,8 @@ export default function Header() {
                                         src={YoutubeLogo}
                                         height={20}
                                         alt="Our youtube"
-                                        loading="lazy"
-
+                                        loading="eager"
+                                        title="Readcity.uz's Youtube"
                                     />
                                 </StyledHeaderSocialLink>
                             </StyledHeaderSocialItem>
@@ -75,7 +76,8 @@ export default function Header() {
                                         src={InstaLogo}
                                         height={20}
                                         alt="Our Instagram"
-                                        loading="lazy"
+                                        loading="eager"
+                                        title="Readcity.uz's Instagram"
                                     />
                                 </StyledHeaderSocialLink>
                             </StyledHeaderSocialItem>

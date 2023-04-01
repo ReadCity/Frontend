@@ -19,7 +19,7 @@ module.exports = {
         primary: "Roboto",
         bungee: "Bungee Shade"
       },
-      backgroundImage: "url('/hero/kid_reading_a_book.jpg')"
+      backgroundImage: "url('/hero/kid_reading_a_book.webp')"
     },
   },
   plugins: [],

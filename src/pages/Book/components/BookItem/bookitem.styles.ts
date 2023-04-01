@@ -6,10 +6,12 @@ const StyledBookItem = styled(motion.li).attrs({
   className: "flex flex-col justify-between px-6 py-6 rounded-lg",
 })`
   cursor: pointer;
-  background-color: #eee;
+  box-shadow:0px 5px 15px 5px rgba(0,0,0,0.3);
   transition: all 300ms ease-in-out;
-  &:hover {
-    background-color: #ddd;
+
+  & > span {
+    display: flex !important;
+    width: 100% !important;
   }
 `;
 export const StyledBookItemCover = styled(motion.img).attrs({

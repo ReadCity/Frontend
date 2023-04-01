@@ -4,7 +4,7 @@ import { StyledMainPageLink, StyledSiteLogo } from "../Header/header.styles";
 import Copyright from "./Copyright";
 import StyledFooter, { StyledFooterContactTitle } from "./footer.styles";
 import FooterContactList from "./FooterContactList";
-import ReadLogo from "/read.png";
+import ReadLogo from "/read.webp";
 
 export default function Footer() {
     return (
@@ -17,6 +17,8 @@ export default function Footer() {
                             width={90}
                             height={40}
                             alt="Read books"
+                            loading="lazy"
+                            title="Readcity.uz's logo"
                         />
                     </StyledMainPageLink>
                     <StyledDiv className="grid gap-3">
