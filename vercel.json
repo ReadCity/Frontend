@@ -1,0 +1,12 @@
+{
+    "routes": [
+        {
+            "src": "/[^.]+",
+            "dest": "/",
+            "status": 200
+        }
+    ],
+    "installCommand": "pnpm i",
+    "buildCommand": "pnpm run build",
+    "framework": "vite"
+}
