@@ -8,7 +8,7 @@ export default function CategorySection ({ children, ...rest }: Props) {
   return (
     <StyledSection>
       <StyledContainer>
-        <CategoryList />
+        {/* <CategoryList /> */}
       </StyledContainer>
     </StyledSection>
   )
