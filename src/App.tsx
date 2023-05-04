@@ -9,6 +9,8 @@ import Loader from './components/Loader'
 import token from './constants/token'
 import Error from './pages/Error'
 import theme from './styles/theme'
+import EditBook from "./pages/Admin/Book/EditBook"
+import { Search } from "./pages/Search"
 const OrderTable = lazy(async () => await import('@pages/Admin/AdminTable/tables/Order'))
 const BookTable = lazy(async () => await import('@pages/Admin/AdminTable/tables/Book'))
 const AuthorTable = lazy(async () => await import('@pages/Admin/AdminTable/tables/Author'))
@@ -20,16 +22,16 @@ const About = lazy(async () => await import('@pages/About'))
 const Book = lazy(async () => await import('@pages/Book'))
 const NotFound = lazy(async () => await import('@pages/NotFound'))
 const SingleBook = lazy(async () => await import('@pages/SingleBook'))
-const BookList = lazy(async () => await import('@pages/Book/components/BookList'))
+// const BookList = lazy(async () => await import('@pages/Book/components/BookList'))
 const AddNewBook = lazy(async () => await import('@pages/Admin').then(module => ({ default: module.NewBook })))
 const AddNewCategory = lazy(async () => await import('@pages/Admin').then(module => ({ default: module.NewCategory })))
 const AddNewAuthor = lazy(async () => await import('@pages/Admin').then(module => ({ default: module.NewAuthor })))
 
-const logError = (error: Error, info: { componentStack: string }) => {
+const logError = (_error: Error, info: { componentStack: string }) => {
   // Do something with the error, e.g. log to an external API
 }
 
-function App () {
+function App() {
   return (
     <>
       <ChakraProvider theme={theme} >
@@ -44,8 +46,9 @@ function App () {
                   <Route path="about" element={<About />} />
                   <Route path="services" element={<Services />} />
                   <Route path="books" element={<Book />}>
-                    <Route index element={<BookList />} />
+                    {/* <Route index element={<BookList />} /> */}
                   </Route>
+                  <Route path="books/query/:query" element={<Search />} />
                   <Route path="/books/:id" element={<SingleBook />} />
                   <Route path="/auth/login" element={token ? <Navigate to="/admin" /> : <Login />} />
                   <Route path="*" element={<NotFound />} />
@@ -56,6 +59,7 @@ function App () {
                   <Route path="author" element={<AuthorTable />} />
                   <Route path="category" element={<CategoryTable />} />
                 </Route>
+                <Route path="/book/edit/:id" element={<EditBook />} />
                 <Route path="/author/new" element={<AddNewAuthor />} />
                 <Route path="/book/new" element={<AddNewBook />} />
                 <Route path="/category/new" element={<AddNewCategory />} />

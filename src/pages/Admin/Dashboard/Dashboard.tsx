@@ -1,9 +1,9 @@
-import { StyledHamburgerLine } from '@src/components/Hamburger/hamburger.styles'
-import { StyledSidebar, StyledSidebarItem, StyledSidebarLink, StyledSidebarList, StyledSidebarToggler } from '../Dashboard/dashboard.styles'
-import { Container, Select } from '@chakra-ui/react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Button, Link, List, ListItem, useDisclosure, IconButton, useColorMode } from '@chakra-ui/react'
 import { MdBook as MenuBookIcon, MdPerson as PersonIcon, MdCategory as CategoryIcon } from "react-icons/md";
 import { BsTable as BookOnlineIcon } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import { StyledContainer } from "@src/styles/globals";
 const dashboardItems = [
   { title: 'Kitoblar', to: '/admin/book', helper: 'course', icon: MenuBookIcon },
   { title: 'Adiblar', to: '/admin/author', helper: 'author', icon: PersonIcon },
@@ -12,40 +12,38 @@ const dashboardItems = [
 ]
 
 export default function Dashboard() {
-  const navigate = useNavigate()
-  const { pathname } = useLocation()
+  const { onClose, isOpen, onOpen } = useDisclosure();
+  const { colorMode } = useColorMode();
   return (
     <>
-      <StyledSidebar>
-        <StyledSidebarToggler>
-          <StyledHamburgerLine />
-          <StyledHamburgerLine />
-        </StyledSidebarToggler>
-        <StyledSidebarList>
-          {dashboardItems.map(item => (
-            <StyledSidebarItem key={item.title}>
-              {<item.icon style={{ position: 'absolute', zIndex: '10', top: '50%', left: '10%', transform: 'translate(-10%,-50%)' }} color="inherit" />}
-              <StyledSidebarLink data-name={item.title} to={item.to} state={{ addItemRoute: item.helper }}>
-              </StyledSidebarLink>
-            </StyledSidebarItem>
-          ))}
-        </StyledSidebarList>
-      </StyledSidebar>
-      <Container maxW="1240px" display={{ base: 'block', md: 'none' }}>
-        <Select defaultValue={pathname} size="md" mt="8" onChange={e => {
-          navigate(e.target.value)
-        }}>
-          {dashboardItems.map(item => {
-            return pathname === item.to
-              ? <option defaultChecked key={item.title} defaultValue={item.to}>
-                {item.to}
-              </option>
-              : <option key={item.title} defaultValue={item.to}>
-                {item.to}
-              </option>
-          })}
-        </Select>
-      </Container>
+      <StyledContainer>
+        <IconButton onClick={onOpen} aria-label="Open sidebar" icon={<HamburgerIcon />}>
+
+        </IconButton>
+      </StyledContainer>
+      <Drawer placement="left" isOpen={isOpen} onClose={onClose}  >
+        <DrawerOverlay />
+        <DrawerContent bg="teal" >
+          <DrawerCloseButton color="white" />
+          <DrawerHeader color="white">Sidebar</DrawerHeader>
+          <DrawerBody>
+            <List colorScheme="teal">
+              {dashboardItems.map(item => (
+                <ListItem pos="relative" key={item.title}>
+                  <Link w="full" _activeLink={{
+                    bg: "white",
+                    color: "teal"
+                  }} px="4" pl="16" py="4 " pos="relative" color="white" as={NavLink} data-name={item.title} to={item.to} state={{ addItemRoute: item.helper }}>
+                    {<item.icon style={{ position: 'absolute', zIndex: '10', top: '50%', left: '10%', transform: 'translate(-10%,-50%)' }} color="inherit" />}
+                    {item.title}
+                  </Link>
+                </ListItem>
+              ))}
+            </List>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+
     </>
   )
 }

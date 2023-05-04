@@ -3,16 +3,18 @@ import { StyledAdminFormCloseButton, StyledForm, StyledFormButton, StyledFormInn
 import { StyledDiv, StyledMain } from '@src/styles/globals'
 import { StyledButton } from '@src/styles/components'
 import { useNavigate } from 'react-router-dom'
+import { Button } from "@chakra-ui/react"
 
 interface AdminFormProps extends HTMLProps<HTMLFormElement> {
-  title: string
-  submitHandler: (data: any) => void
-  id?: string
+    title: string
+    submitHandler: (data: any) => void
+    id?: string;
+    isLoading?: boolean
 }
 
-export function AdminForm ({ title, children, submitHandler, id, ...rest }: AdminFormProps) {
-  const navigate = useNavigate()
-  return (
+export function AdminForm({ title, children, submitHandler, id, isLoading = false, ...rest }: AdminFormProps) {
+    const navigate = useNavigate()
+    return (
         <>
             <StyledMain>
                 <StyledDiv className="h-full flex items-center">
@@ -23,15 +25,15 @@ export function AdminForm ({ title, children, submitHandler, id, ...rest }: Admi
                             </StyledFormTitle>
                         </StyledFormInner>
                         {children}
-                        <StyledButton colorScheme="contained" variant="large">
+                        <Button isLoading={isLoading} type="submit" mt="4" colorScheme="teal">
                             Tasdiqlash
-                        </StyledButton>
+                        </Button>
                     </StyledForm>
-                    <StyledAdminFormCloseButton className="bg-myPrimary-100" type="button" onClick={() => { navigate('/admin') }}>
+                    <StyledAdminFormCloseButton className="bg-myPrimary-100" type="button" onClick={() => { navigate(-1) }}>
 
                     </StyledAdminFormCloseButton>
                 </StyledDiv>
             </StyledMain>
         </>
-  )
+    )
 }

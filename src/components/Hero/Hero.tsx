@@ -10,7 +10,6 @@ import {
   type IconProps,
   useColorModeValue,
   Link,
-  Fade,
   useColorMode
 } from '@chakra-ui/react'
 import { StyledContainer } from '@src/styles/globals'
@@ -37,7 +36,7 @@ export default function CallToActionWithVideo() {
             <Text
               as={'span'}
               position={'relative'}
-              color={isDarkMode ? "teal" : "teal"}
+              color="teal"
               _after={{
                 content: "''",
                 width: 'full',
@@ -56,8 +55,8 @@ export default function CallToActionWithVideo() {
             </Text>
           </Heading>
           <Text fontSize={{
-            base: 'xl',
-            md: '2xl'
+            base: 'lg',
+            md: 'xl'
           }} color={'gray.500'}>
             I find television very educating. Every time somebody turns on the set, I go into the other room and read a book.
           </Text>
@@ -71,8 +70,7 @@ export default function CallToActionWithVideo() {
               rounded={'full'}
               size={'lg'}
               fontWeight={'normal'}
-              colorScheme={'red'}
-              _hover={{ bg: 'red.500' }}
+              colorScheme="teal"
             >
               Get started
             </Button>
@@ -93,7 +91,7 @@ export default function CallToActionWithVideo() {
             top={'-20%'}
             left={0}
             zIndex={-1}
-            color={useColorModeValue('red.50', 'red.400')}
+            color="teal"
           />
           <Box
             position={'relative'}

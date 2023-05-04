@@ -12,31 +12,27 @@ const orderColsDef = [
   columnHelper.accessor('id', {
     cell: (info) => info.row.original.id
   }),
-  columnHelper.accessor('email', {
-    cell: (info) => info.row.original.email
-  }),
   columnHelper.accessor('name', {
     cell: (info) => info.row.original.name
-  }),
-  columnHelper.accessor('location', {
-    cell: (info) => info.row.original.location
   }),
   columnHelper.accessor('phone', {
     cell: (info) => info.row.original.phone
   }),
+
   columnHelper.display({
     id: crypto.randomUUID(),
     cell: props => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
       const { mutate } = useMutation({
         mutationKey: ['orders'],
         mutationFn: async () => {
-          return (await axiosAdminClient.delete('/order/' + props.row.original.id)).data
+          return (await axiosAdminClient.delete('/order/' + String(props.row.original.id))).data
         },
-        onSuccess (data, variables, context) {
-          queryClient.invalidateQueries({ queryKey: ['orders', 'order'] })
+        onSuccess(data, variables, context) {
+          void queryClient.invalidateQueries({ queryKey: ['orders', 'order'] })
           toast.success("Muvaffaqqiyatli o'chirildi!")
         },
-        onError (error, variables, context) {
+        onError(error, variables, context) {
           console.log(error)
           toast.error('Xatolik yuzaga keldi!')
         }

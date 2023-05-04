@@ -14,7 +14,7 @@ export default function Header() {
     const headerBg = useColorModeValue('gray.50', 'gray.900')
     return (
         <>
-            <Box as="header" py="10" bg={headerBg}>
+            <Box pos="fixed" w="full" zIndex="100" as="header" py="10" bg={headerBg}>
                 <StyledContainer>
                     <StyledHeaderWrapper>
                         <Flex gap={['1', '2', '3']} flexGrow="1" justifyContent="space-between" alignItems="center">

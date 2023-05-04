@@ -2,7 +2,7 @@ import { axiosClient } from '@src/main'
 import { type CategoryModel } from '@src/models/category'
 import { useQuery } from '@tanstack/react-query'
 
-export default function useCategories () {
+export default function useCategories() {
   const { data: categories, ...rest } = useQuery({
     queryKey: ['category'],
     queryFn: async (): Promise<CategoryModel[]> => {
@@ -15,6 +15,7 @@ export default function useCategories () {
     placeholderData: []
   })
   return {
-    categories: [...categories!, { createdAt: Date.now(), deletedAt: null, id: 'all', name: 'All', updatedAt: null }] as CategoryModel[], ...rest
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    categories: [...categories!] as CategoryModel[], ...rest
   }
 }

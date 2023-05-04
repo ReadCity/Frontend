@@ -18,7 +18,7 @@ const SocialButton = ({
   children: ReactNode
   label: string
   href: string
-}) => {
+  }) => {
   return (
     <chakra.button
       bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}

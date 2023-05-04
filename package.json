@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "check:performance":"lighthouse http://localhost:4173 --view"
+    "check:performance": "lighthouse http://localhost:4173 --view"
   },
   "babelMacros": {
     "twin": {
@@ -40,6 +40,7 @@
     "react-icons": "^4.8.0",
     "react-is": "^16.13.1",
     "react-router-dom": "^6.8.1",
+    "react-select": "^5.7.3",
     "react-slick": "^0.29.0",
     "react-spinners": "^0.13.8",
     "react-toastify": "^9.1.2",

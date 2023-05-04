@@ -1,8 +1,8 @@
-import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider,  Grid,  Image, Stack, Text } from '@chakra-ui/react'
+import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Grid, Image, Stack, Text } from '@chakra-ui/react'
 import { StyledContainer } from '@src/styles/globals'
 import { motion } from "framer-motion";
-export function BookLoader() {
-  const itemArray = Array(20).fill('')
+export function BookLoader({ count = 20, layout = "grid" }: { count?: number, layout?: "flex" | "grid" }) {
+  const itemArray = Array(count).fill('')
   return (
     <StyledContainer>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} layout>

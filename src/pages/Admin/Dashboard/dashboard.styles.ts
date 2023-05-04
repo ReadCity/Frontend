@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 export const StyledSidebar = styled(motion.aside).attrs({
   className:
-    'absolute hidden w-[min(250px,100%)] md:block h-full pb-6 md:relative sidebar bg-myPrimary-100'
+    'absolute hidden w-[min(250px,100%)] md:block h-full pb-6 md:relative sidebar'
 })`
   border-top: 1px solid #222;
   flex-shrink: 0;
@@ -29,12 +29,12 @@ export const StyledSidebarList = styled(motion.ul).attrs({
 })``
 
 export const StyledSidebarItem = styled(motion.li).attrs({
-  className: 'relative sidebar-item flex gap-2 text-white  bg-myPrimary-100'
+  className: 'relative sidebar-item flex gap-2 text-white'
 })``
 
 export const StyledSidebarLink = styled(NavLink).attrs({
   className:
-    'relative sidebar-link block py-6 font-bold font-roboto text-center text-white hover:bg-slate-600'
+    'relative sidebar-link block py-6 font-bold font-roboto text-center text-white'
 })`
   flex-grow: 1;
   &.active {

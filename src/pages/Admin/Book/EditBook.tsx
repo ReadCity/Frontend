@@ -1,39 +1,47 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useState } from 'react'
-import { z } from 'zod'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast, ToastContainer } from 'react-toastify'
 import AdminImageUploader from '@src/components/Form/AdminImageUploader'
 import { AdminForm } from '@src/components/Form/AdminForm'
+import { StyledFormInput, StyledFormOption, StyledFormSelect, StyledFormWrapper } from '@src/components/Form/Form.styles'
 import { Col2 } from '@src/styles/globals'
 import { BookSchema } from '@src/schemas/book'
 import { type Book } from '@src/interfaces'
-import { axiosAdminClient } from '@src/main'
+import { axiosAdminClient, axiosClient } from '@src/main'
+import FormInput from '../FormInput/FormInput'
 import useCategories from '@src/hooks/useCategories'
 import useAuthors from '@src/hooks/useAuthors'
-import { FormControl, Input, Select, Stack } from "@chakra-ui/react"
+import { useParams } from "react-router-dom"
+import { useQuery } from "@tanstack/react-query"
+import type { BookModel } from "@src/models/book"
+import { Box, FormControl, Input, Select, Stack } from "@chakra-ui/react"
 
-export default function NewBook() {
-  const [isLoading, setLoading] = useState<boolean>(false);
-  const [authorId, setAuthorId] = useState<number>(1)
-  const [bookImage, setBookImage] = useState<File>()
-  const { authors, isLoading: isAuthorLoading } = useAuthors()
-  const { categories, isLoading: isCategoryLoading } = useCategories()
-  const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm<Book>({
+export default function EditBook() {
+  const { register, handleSubmit, formState: { errors }, reset, } = useForm<Book>({
     mode: 'all',
     resolver: zodResolver(BookSchema),
     defaultValues: {
-      authorId: '1',
-      categoryId: '1'
+
     }
   })
+  const { id } = useParams();
+  const { data: book } = useQuery({
+    queryKey: ["book", "edit", id],
+    queryFn: async (): Promise<BookModel> => {
+      return await (await axiosClient.get("/book/" + String(id))).data.data;
+    }
+  })
+  const [authorId, setAuthorId] = useState<number>(1)
+  const [bookImage, setBookImage] = useState<File>()
+  const { authors } = useAuthors()
+  const { categories } = useCategories()
   const success = (msg: string) => toast.success(msg)
   const fail = (message: string) => toast.error('Xatolik! ' + message)
   const NewBookHandler: SubmitHandler<Book> = async (data) => {
     try {
-      setLoading(true)
       const newData = new FormData()
       Object.entries(data).forEach(item => {
         if (item[0] === 'file') {
@@ -46,16 +54,13 @@ export default function NewBook() {
           newData.append(item[0], item[1])
         }
       })
-      await axiosAdminClient.post('/book', newData)
+      await axiosAdminClient.patch('/book/' + String(id), newData);
       success('Book is successfully created!')
       reset()
       setBookImage(undefined)
     } catch (error: any) {
       console.log(error)
       fail("Iltimos formani to'g'ri to'ldirganingizni yana bir bor tekshiring!")
-    }
-    finally {
-      setLoading(false)
     }
   }
   // useEffect(() => {
@@ -64,8 +69,8 @@ export default function NewBook() {
   return (
     <Col2>
       <AdminImageUploader setAuthorImage={setBookImage} formId="authorForm" Image={bookImage} inputId="bookImage" />
-      <AdminForm isLoading={isLoading} id="authorForm" title="Kitob qo'shish" submitHandler={handleSubmit(NewBookHandler)}>
-        <Stack spacing="4">
+      <AdminForm id="authorForm" title="Kitobni o'zgartirish" submitHandler={handleSubmit(NewBookHandler)}>
+        <Stack>
           <FormControl>
             <Input {...register('title')} type="text" placeholder="Kitob nomi" />
           </FormControl>
@@ -84,35 +89,33 @@ export default function NewBook() {
           <FormControl>
             <Input {...register('count')} type="number" placeholder="Sotuvdagi soni" />
           </FormControl>
-          <FormControl>
-            <Select {...register('categoryId')} onChangeCapture={(e: any) => {
-              setAuthorId(e.target.value)
-            }}>
-              <option defaultChecked>Kategoriyani tanlash</option>
-              {categories?.map(category => {
-                return <option key={category.name} value={category.id}>
-                  {category.name}
-                </option>
-              })}
-            </Select>
+          <Select {...register('categoryId')} onChangeCapture={(e: any) => {
+            setAuthorId(e.target.value)
+          }}>
+            <Box as="option" defaultChecked>Kategoriyani tanlash</Box>
+            {categories?.map(category => {
+              return <Box as="option" key={category.name} value={category.id}>
+                {category.name}
+              </Box>
+            })}
+          </Select>
 
-          </FormControl>
-          <FormControl>
-            <Select {...register('authorId')} >
-              <option defaultChecked>Muallifni tanlash</option>
-              {authors?.map(author => {
-                return <option key={author.id} value={author.id}>
-                  {author.name}
-                </option>
-              })}
-            </Select>
-          </FormControl>
+          <Select {...register('authorId')} >
+            <Box as="option" defaultChecked>Choose author</Box>
+            {authors?.map(author => {
+              return <Box as="option" key={author.id} value={author.id}>
+                {author.name}
+              </Box>
+            })}
+          </Select>
           <FormControl>
             <Input {...register('desc')} type="text" placeholder="description" />
           </FormControl>
-          <Input className="visually-hidden" aria-hidden="true" id="bookImage" {...register('file')} onChangeCapture={(e: any) => {
-            setBookImage(e.target.files[0])
-          }} type="file" placeholder="image" />
+          <FormControl>
+            <Input id="bookImage" {...register('file')} onChangeCapture={(e: any) => {
+              setBookImage(e.target.files[0])
+            }} type="file" placeholder="image" />
+          </FormControl>
         </Stack>
       </AdminForm >
       <ToastContainer />

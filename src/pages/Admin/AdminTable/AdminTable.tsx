@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
 import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table'
-import { StyledAdminAddButton, StyledTable, StyledTableBody, StyledTableData, StyledTableHead, StyledTableHeader, StyledTableRow, StyledTableUnstyledRow } from './admin-table.styles'
 import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import { type MouseEvent } from 'react'
@@ -8,6 +7,7 @@ import { axiosAdminClient, queryClient } from '@src/main'
 import axios from 'axios'
 import Loader from '@src/components/Loader'
 import { StyledDiv } from '@src/styles/globals'
+import { Button, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react"
 
 interface AdminTableProps {
   tableFor: string
@@ -17,7 +17,7 @@ interface AdminTableProps {
   tableKey: string
 };
 
-export default function AdminTable ({ tableFor, tableHeaders, page, hooks, tableKey }: AdminTableProps) {
+export default function AdminTable({ tableFor, tableHeaders, page, hooks, tableKey }: AdminTableProps) {
   const tableRoute = tableFor
   const addRoute = `/${tableKey}/new`
   const { data, isLoading } = useQuery({
@@ -41,16 +41,16 @@ export default function AdminTable ({ tableFor, tableHeaders, page, hooks, table
       const buttonRow = JSON.parse(currentTarget.dataset.row as string)
       const buttonId = currentTarget.id
       if (buttonId === 'edit') {
-        navigate(`/edit/${tableFor}/${buttonDataId}`, {
+        navigate(`/edit/${tableFor}/${buttonDataId as string}`, {
           state: buttonRow
         }); return
       }
       try {
         const deleteRoute = tableFor.slice(0, -1)
         // partners -> partner, files -> file, news
-        const deletedItemResponse = await axios.delete(`${deleteRoute}/delete/${buttonDataId}`)
+        await axios.delete(`${deleteRoute}/delete/${buttonDataId as string}`)
         toast.success("Muvaffaqqiyatli o'chirildi!")
-        queryClient.invalidateQueries({
+        await queryClient.invalidateQueries({
           queryKey: [tableFor],
           exact: true
         })
@@ -72,38 +72,40 @@ export default function AdminTable ({ tableFor, tableHeaders, page, hooks, table
     isLoading
       ? <Loader />
       : <>
-            <StyledDiv className="w-full h-[600px] overflow-x-visible overflow-y-auto lg:overflow-x-hidden">
-                <StyledTable>
-                    <StyledTableHeader>
-                        {getHeaderGroups().map(headerGroup => (
-                            <StyledTableRow key={headerGroup.id}>
-                                {headerGroup.headers.map(header => (
-                                    <StyledTableHead key={header.id}>
-                                        {flexRender(header.column.columnDef.header, header.getContext())}
-                                    </StyledTableHead>
-                                ))}
-                            </StyledTableRow>
-                        ))}
-                    </StyledTableHeader>
-                    <StyledTableBody onClick={handleTableClick}>
-                        {tableInstance.getRowModel().rows.map(row => (
-                            <StyledTableUnstyledRow key={row.id}>
-                                {row.getVisibleCells().map(cell => {
-                                  return <StyledTableData key={cell.id} >
-                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+        <StyledDiv className="w-full h-[700px] overflow-x-visible overflow-y-auto mt-8 lg:overflow-x-hidden">
+          <TableContainer>
+            <Table size={["sm", "sm", "sm", "md", "lg"]} colorScheme="teal">
+              <Thead>
+                {getHeaderGroups().map(headerGroup => (
+                  <Tr key={headerGroup.id}>
+                    {headerGroup.headers.map(header => (
+                      <Th key={header.id}>
+                        {flexRender(header.column.columnDef.header, header.getContext())}
+                      </Th>
+                    ))}
+                  </Tr>
+                ))}
+              </Thead>
+              {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
+              <Tbody onClick={handleTableClick}>
+                {tableInstance.getRowModel().rows.map(row => (
+                  <Tr key={row.id}>
+                    {row.getVisibleCells().map(cell => {
+                      return <Td key={cell.id} >
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
 
-                                    </StyledTableData>
-                                })}
-                            </StyledTableUnstyledRow>
-                        ))}
+                      </Td>
+                    })}
+                  </Tr>
+                ))}
 
-                    </StyledTableBody>
-                </StyledTable>
-            </StyledDiv>
-            <StyledAdminAddButton onClick={() => { navigate(addRoute) }} className="text-white bg-mySecondary-100">
-                Qo'shish
-            </StyledAdminAddButton>
-            <ToastContainer />
-        </>
+              </Tbody>
+            </Table>
+          </TableContainer>
+        </StyledDiv>
+        <Button onClick={() => { navigate(addRoute) }} mt="4" colorScheme="teal">
+          Qo&apos;shish
+        </Button>
+      </>
   )
 }

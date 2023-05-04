@@ -15,10 +15,10 @@ export default function BookItem(props: BookModel) {
   return (
     <Card rounded="lg" overflow="hidden" size="sm" shadow="dark-lg" as={motion.div} layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} maxW="full">
       <Box w="full" overflow="hidden">
-        <Image mt={["4", "0"]} rounded={["lg", "none"]} transform={["none", "none", "scale(1.02)"]} cursor="zoom-in" transition="all 500ms ease-in-out" _hover={{
+        <Image bg="gray.200" p="2" rounded="lg" mt="4" transform={["none", "none", "scale(1.02)"]} cursor="zoom-in" transition="all 500ms ease-in-out" _hover={{
           transform: 'scale(1.05)'
           // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        }} className="self-center mx-auto object-fill skeleton-book-img" src={`${import.meta.env.VITE_BACKEND_URL}/${image?.img}`} fallbackSrc="https://via.placeholder.com/300x300" width={["auto", "full"]} htmlWidth="300" htmlHeight="300" height={[200, 300]} loading="lazy" alt={'Loading'} />
+        }} className="self-center mx-auto object-fill" src={`${import.meta.env.VITE_BACKEND_URL}/${image?.img}`} fallbackSrc="https://via.placeholder.com/300x300" height={200} loading="lazy" width={200} alt={'Loading'} />
       </Box>
       <CardBody>
         <Flex>
