@@ -10,10 +10,6 @@ export default function Home() {
         <meta name="description" content="There are many variations of passages of Lorem Ipsum available, have suffered alteration in some form." />
       </Helmet>
       <Filter />
-      {/* <Hero /> */}
-      <CategoryCarousel categoryId={11} />
-      <CategoryCarousel categoryId={3} />
-      <CategoryCarousel categoryId={4} />
       <BookList />
     </>
   )
