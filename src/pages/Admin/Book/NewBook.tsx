@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useState } from 'react'
-import { z } from 'zod'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast, ToastContainer } from 'react-toastify'
@@ -17,11 +16,10 @@ import { FormControl, Input, Select, Stack } from "@chakra-ui/react"
 
 export default function NewBook() {
   const [isLoading, setLoading] = useState<boolean>(false);
-  const [authorId, setAuthorId] = useState<number>(1)
   const [bookImage, setBookImage] = useState<File>()
-  const { authors, isLoading: isAuthorLoading } = useAuthors()
-  const { categories, isLoading: isCategoryLoading } = useCategories()
-  const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm<Book>({
+  const { authors } = useAuthors()
+  const { categories } = useCategories()
+  const { register, handleSubmit, reset } = useForm<Book>({
     mode: 'all',
     resolver: zodResolver(BookSchema),
     defaultValues: {
@@ -53,14 +51,11 @@ export default function NewBook() {
     } catch (error: any) {
       console.log(error)
       fail("Iltimos formani to'g'ri to'ldirganingizni yana bir bor tekshiring!")
-    }
-    finally {
+    } finally {
       setLoading(false)
     }
   }
-  // useEffect(() => {
-  //   setValue("file", bookImage);
-  // }, [bookImage])
+
   return (
     <Col2>
       <AdminImageUploader setAuthorImage={setBookImage} formId="authorForm" Image={bookImage} inputId="bookImage" />
@@ -85,9 +80,7 @@ export default function NewBook() {
             <Input {...register('count')} type="number" placeholder="Sotuvdagi soni" />
           </FormControl>
           <FormControl>
-            <Select {...register('categoryId')} onChangeCapture={(e: any) => {
-              setAuthorId(e.target.value)
-            }}>
+            <Select {...register('categoryId')}>
               <option defaultChecked>Kategoriyani tanlash</option>
               {categories?.map(category => {
                 return <option key={category.name} value={category.id}>

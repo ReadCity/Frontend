@@ -1,5 +1,5 @@
 import { Box, Grid, Heading, Text } from '@chakra-ui/react'
-import { StyledContainer, StyledDiv, StyledSection, StyledSectionText, StyledSectionTitle, StyledTextContainer, StyledUnderline } from '@src/styles/globals'
+import { StyledContainer, div, StyledSection, StyledSectionText, StyledSectionTitle, StyledTextContainer, StyledUnderline } from '@src/styles/globals'
 import { type HTMLMotionProps, motion } from 'framer-motion'
 import { HTMLProps, ReactNode } from 'react'
 import { StyledReusableHero } from './reusable-hero.styles'

@@ -1,14 +1,14 @@
 import { StyledContainer } from '@src/styles/globals'
 import {
     StyledHeaderWrapper,
-    StyledMainPageLink
 } from './header.styles'
-import ReadLogo from '/read.svg'
-import ReadLightLogo from '/read_dark.png'
-import { Box, Button, ButtonGroup, Divider, Flex, Image, useColorMode, useColorModeValue } from '@chakra-ui/react'
+import { Link as RouterLink } from "react-router-dom";
+import { Box, Button, ButtonGroup, Divider, Flex, Image, Link, useColorMode, useColorModeValue } from '@chakra-ui/react'
 import { MoonIcon as DarkMode, SunIcon as LightMode } from '@chakra-ui/icons';
-import Cart from "../Cart/Cart";
-
+import Cart from "../Cart/Cart"
+import LogoLight from "/read-dark.svg"
+import LogoDark from "/read-light.jpg"
+import Logo from "@src/utils/icons";
 export default function Header() {
     const { toggleColorMode, colorMode } = useColorMode();
     const headerBg = useColorModeValue('gray.50', 'gray.900')
@@ -18,9 +18,10 @@ export default function Header() {
                 <StyledContainer>
                     <StyledHeaderWrapper>
                         <Flex gap={['1', '2', '3']} flexGrow="1" justifyContent="space-between" alignItems="center">
-                            <StyledMainPageLink to="/">
-                                <Image
-                                    src={colorMode === 'light' ? ReadLightLogo : ReadLogo}
+                            <Link color={colorMode === "light" ? "black" : "white"} as={RouterLink} to="/">
+                                {/* <Image
+                                    color={colorMode === "light" ? "black" : "white"}
+                                    src={colorMode === "light" ? LogoLight : LogoDark}
                                     width={120}
                                     height="60px"
                                     objectFit="cover"
@@ -28,8 +29,9 @@ export default function Header() {
                                     loading="eager"
                                     title="Readcity.uz's logo"
                                     rounded="base"
-                                />
-                            </StyledMainPageLink>
+                                /> */}
+                                <Logo />
+                            </Link>
                             <ButtonGroup>
                                 <Button onClick={toggleColorMode}>
                                     {colorMode === 'light' ? <DarkMode /> : <LightMode />}

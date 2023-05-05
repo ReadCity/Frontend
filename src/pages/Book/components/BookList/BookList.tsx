@@ -10,7 +10,7 @@ import { BookLoader } from '@src/components/Loader'
 
 export default function BookList() {
   const { data: books, isLoading, isFetching } = useQuery({
-    queryKey: ['books'],
+    queryKey: ['books', 'all'],
     queryFn: async (): Promise<BookModel[]> => {
       return (await axiosClient.get('/book/all')).data.data.data
     },

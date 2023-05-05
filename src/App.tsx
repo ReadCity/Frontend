@@ -5,12 +5,11 @@ import { AdminLayout } from './layouts'
 import { ChakraProvider } from '@chakra-ui/react'
 import { ErrorBoundary } from 'react-error-boundary'
 import RootLayout from '@layouts/root'
-import Loader from './components/Loader'
+import Loader from '@components/Loader'
 import token from './constants/token'
-import Error from './pages/Error'
-import theme from './styles/theme'
-import EditBook from "./pages/Admin/Book/EditBook"
-import { Search } from "./pages/Search"
+import Error from '@pages/Error'
+import theme from '@styles/theme'
+const EditBook = lazy(async () => await import("./pages/Admin/Book/EditBook"));
 const OrderTable = lazy(async () => await import('@pages/Admin/AdminTable/tables/Order'))
 const BookTable = lazy(async () => await import('@pages/Admin/AdminTable/tables/Book'))
 const AuthorTable = lazy(async () => await import('@pages/Admin/AdminTable/tables/Author'))
@@ -18,11 +17,12 @@ const CategoryTable = lazy(async () => await import('@pages/Admin/AdminTable/tab
 const Login = lazy(async () => await import('@pages/Login'))
 const Home = lazy(async () => await import('@pages/Home'))
 const Services = lazy(async () => await import('@pages/Services'))
-const About = lazy(async () => await import('@pages/About'))
+const About = lazy(async () => await import('@pages/About/About'))
 const Book = lazy(async () => await import('@pages/Book'))
 const NotFound = lazy(async () => await import('@pages/NotFound'))
 const SingleBook = lazy(async () => await import('@pages/SingleBook'))
 // const BookList = lazy(async () => await import('@pages/Book/components/BookList'))
+const Search = lazy(async () => await import('@pages/Search').then(module => ({ default: module.Search })))
 const AddNewBook = lazy(async () => await import('@pages/Admin').then(module => ({ default: module.NewBook })))
 const AddNewCategory = lazy(async () => await import('@pages/Admin').then(module => ({ default: module.NewCategory })))
 const AddNewAuthor = lazy(async () => await import('@pages/Admin').then(module => ({ default: module.NewAuthor })))

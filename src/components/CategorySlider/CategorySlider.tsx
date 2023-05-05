@@ -9,7 +9,6 @@ import { useState } from "react";
 import { BookLoader } from "../Loader";
 interface CategoryCarouselProps {
   categoryId: CategoryModel["id"]
-
 }
 export function CategoryCarousel({ categoryId }: CategoryCarouselProps) {
   console.log(categoryId);

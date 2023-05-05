@@ -4,7 +4,7 @@ import { Box, Flex } from '@chakra-ui/react'
 import { useForm, type UseFormGetValues, type UseFormRegister, type UseFormSetValue } from 'react-hook-form'
 import { StyledContainer } from '@src/styles/globals'
 import StyledFilter from './filter.styles'
-import Search from "../Search/Search"
+import Search from "../Search/Search";
 import { type Dispatch, type SetStateAction, useState } from "react"
 export interface FilterProps {
   register: UseFormRegister<FilterFields>,

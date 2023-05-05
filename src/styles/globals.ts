@@ -415,22 +415,6 @@ export const StyledSectionText = styled.p.attrs({
 export const StyledUnderline = styled.div.attrs({
   className: 'w-[150px] h-[10px] bg-gradient'
 })``
-export const StyledDiv = styled(motion.div)``
-export const StyledList = styled.ul``
-export const StyledListItem = styled.li``
-export const StyledLink = styled.a``
-export const StyledStrong = styled.strong``
-export const StyledLogoImg = styled.img``
-export const StyledSection = styled(motion.section).attrs({
-  className: 'relative py-12 px-8 text-white'
-})``
-export const StyledImg = styled(motion.img).attrs({
-  className: 'max-w-full'
-})<StyledImgTypes>`
-  width: 100%;
-  object-fit: contain;
-  height: ${(props) => props.height + 'px'};
-`
 export const Col2 = styled.div`
   min-height: 100vh;
   display: grid;

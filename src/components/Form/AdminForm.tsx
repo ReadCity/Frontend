@@ -1,9 +1,9 @@
 import { type HTMLProps } from 'react'
 import { StyledAdminFormCloseButton, StyledForm, StyledFormButton, StyledFormInner, StyledFormTitle } from './Form.styles'
-import { StyledDiv, StyledMain } from '@src/styles/globals'
+import { div, StyledMain } from '@src/styles/globals'
 import { StyledButton } from '@src/styles/components'
 import { useNavigate } from 'react-router-dom'
-import { Button } from "@chakra-ui/react"
+import { Box, Button } from "@chakra-ui/react"
 
 interface AdminFormProps extends HTMLProps<HTMLFormElement> {
     title: string
@@ -17,7 +17,7 @@ export function AdminForm({ title, children, submitHandler, id, isLoading = fals
     return (
         <>
             <StyledMain>
-                <StyledDiv className="h-full flex items-center">
+                <Box className="h-full flex items-center">
                     <StyledForm id={id} onSubmit={submitHandler}>
                         <StyledFormInner>
                             <StyledFormTitle>
@@ -32,7 +32,7 @@ export function AdminForm({ title, children, submitHandler, id, isLoading = fals
                     <StyledAdminFormCloseButton className="bg-myPrimary-100" type="button" onClick={() => { navigate(-1) }}>
 
                     </StyledAdminFormCloseButton>
-                </StyledDiv>
+                </Box>
             </StyledMain>
         </>
     )

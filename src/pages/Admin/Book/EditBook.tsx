@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useState } from 'react'
@@ -20,7 +21,7 @@ import type { BookModel } from "@src/models/book"
 import { Box, FormControl, Input, Select, Stack } from "@chakra-ui/react"
 
 export default function EditBook() {
-  const { register, handleSubmit, formState: { errors }, reset, } = useForm<Book>({
+  const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm<Book>({
     mode: 'all',
     resolver: zodResolver(BookSchema),
     defaultValues: {
@@ -32,8 +33,18 @@ export default function EditBook() {
     queryKey: ["book", "edit", id],
     queryFn: async (): Promise<BookModel> => {
       return await (await axiosClient.get("/book/" + String(id))).data.data;
-    }
-  })
+    },
+    onSuccess(data) {
+      Object.entries(data).forEach(pair => {
+        console.log(pair);
+
+        // @ts-ignore
+        if (pair === "image") return;
+        // @ts-ignore
+        setValue(pair[0], pair[1]);
+      })
+    },
+  });
   const [authorId, setAuthorId] = useState<number>(1)
   const [bookImage, setBookImage] = useState<File>()
   const { authors } = useAuthors()

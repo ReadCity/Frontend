@@ -1,9 +1,8 @@
-import lazyload from '@src/utils/lazyload'
 import { StyledContainer } from '@src/styles/globals'
 import { Outlet, useNavigate } from 'react-router-dom'
-import { lazy, useEffect } from "react";
-const Dashboard = lazyload("../pages/Admin", "Dashboard");
-const Header = lazy(async () => await import("@components/Header"));
+import {  useEffect } from "react";
+import Header from "@src/components/Header";
+import { Dashboard } from "@src/pages/Admin";
 
 export default function AdminLayout() {
     const navigate = useNavigate();

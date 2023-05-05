@@ -6,7 +6,7 @@ import { type MouseEvent } from 'react'
 import { axiosAdminClient, queryClient } from '@src/main'
 import axios from 'axios'
 import Loader from '@src/components/Loader'
-import { StyledDiv } from '@src/styles/globals'
+import { div } from '@src/styles/globals'
 import { Button, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react"
 
 interface AdminTableProps {
@@ -72,7 +72,7 @@ export default function AdminTable({ tableFor, tableHeaders, page, hooks, tableK
     isLoading
       ? <Loader />
       : <>
-        <StyledDiv className="w-full h-[700px] overflow-x-visible overflow-y-auto mt-8 lg:overflow-x-hidden">
+        <div className="w-full h-[700px] overflow-x-visible overflow-y-auto mt-8 lg:overflow-x-hidden">
           <TableContainer>
             <Table size={["sm", "sm", "sm", "md", "lg"]} colorScheme="teal">
               <Thead>
@@ -102,7 +102,7 @@ export default function AdminTable({ tableFor, tableHeaders, page, hooks, tableK
               </Tbody>
             </Table>
           </TableContainer>
-        </StyledDiv>
+        </div>
         <Button onClick={() => { navigate(addRoute) }} mt="4" colorScheme="teal">
           Qo&apos;shish
         </Button>

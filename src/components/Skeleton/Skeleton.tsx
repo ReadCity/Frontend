@@ -1,4 +1,4 @@
-import { StyledContainer, StyledDiv } from '@src/styles/globals'
+import { StyledContainer, div } from '@src/styles/globals'
 import { type HTMLProps } from 'react'
 
 interface Props extends HTMLProps<HTMLDivElement> {
@@ -7,11 +7,11 @@ interface Props extends HTMLProps<HTMLDivElement> {
 
 function Skeleton ({ children, ...reset }: Props) {
   return (
-        <StyledDiv>
+    <div>
             <StyledContainer>
 
             </StyledContainer>
-        </StyledDiv>
+    </div>
   )
 }
 
