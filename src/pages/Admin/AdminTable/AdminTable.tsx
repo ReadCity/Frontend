@@ -6,7 +6,6 @@ import { type MouseEvent } from 'react'
 import { axiosAdminClient, queryClient } from '@src/main'
 import axios from 'axios'
 import Loader from '@src/components/Loader'
-import { div } from '@src/styles/globals'
 import { Button, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react"
 
 interface AdminTableProps {

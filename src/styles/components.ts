@@ -92,11 +92,11 @@ export const StyledPageTitle = styled(motion.h1).attrs({
   className: 'text-[65px]'
 })``
 
-export const StyledSectionTitle = styled(motion.h2).attrs({
+export const sectionTitle = styled(motion.h2).attrs({
   className: 'text-[55px] bg-gradient'
 })``
 
-export const StyledSectionSubtitle = styled(motion.h3).attrs({
+export const sectionSubtitle = styled(motion.h3).attrs({
   className: 'text-[45px]'
 })``
 

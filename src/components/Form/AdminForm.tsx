@@ -1,6 +1,6 @@
 import { type HTMLProps } from 'react'
 import { StyledAdminFormCloseButton, StyledForm, StyledFormButton, StyledFormInner, StyledFormTitle } from './Form.styles'
-import { div, StyledMain } from '@src/styles/globals'
+import {  StyledMain } from '@src/styles/globals'
 import { StyledButton } from '@src/styles/components'
 import { useNavigate } from 'react-router-dom'
 import { Box, Button } from "@chakra-ui/react"

@@ -399,7 +399,7 @@ export const StyledTextContainer = styled.div<StyledTextContainerTypes>`
   max-width: ${(props) => props.maxWidth};
   margin: ${(props) => props.margin};
 `
-export const StyledSectionTitle = styled.h2.attrs({
+export const sectionTitle = styled.h2.attrs({
   className:
     'mb-2 font-bold text-[50px] leading-[110%] text-center tracking-[-0.02em] bg-gradient'
 })`
@@ -408,7 +408,7 @@ export const StyledSectionTitle = styled.h2.attrs({
   -webkit-background-clip: text;
   color: transparent;
 `
-export const StyledSectionText = styled.p.attrs({
+export const sectionText = styled.p.attrs({
   className:
     'text-[19px] leading-[180%] text-center tracking-[-0.01em] text-[#B4C7E7]'
 })``

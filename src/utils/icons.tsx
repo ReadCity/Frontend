@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable react/no-unknown-property */
+// @ts-nocheck
 export default function Logo() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" width="120" height="100" version="1.1" style={{ shapeRendering: 'geometricPrecision', textRendering: 'geometricPrecision', imageRendering: 'optimizeQuality', fillRule: 'evenodd', clipRule: 'evenodd' }} viewBox="0 0 49999.9 49999.9" xmlnsXlink="http://www.w3.org/1999/xlink" xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">

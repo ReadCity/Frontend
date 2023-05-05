@@ -1,7 +1,7 @@
 import { AdminForm } from '@src/components/Form/AdminForm'
 import { type Category } from '@src/interfaces'
 import { axiosAdminClient, queryClient } from '@src/main'
-import { StyledContainer, div, StyledSection } from '@src/styles/globals'
+import { StyledContainer } from '@src/styles/globals'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify'

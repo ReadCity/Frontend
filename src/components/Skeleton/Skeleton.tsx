@@ -1,4 +1,4 @@
-import { StyledContainer, div } from '@src/styles/globals'
+import { StyledContainer } from '@src/styles/globals'
 import { type HTMLProps } from 'react'
 
 interface Props extends HTMLProps<HTMLDivElement> {
