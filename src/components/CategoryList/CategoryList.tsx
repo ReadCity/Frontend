@@ -1,17 +1,12 @@
 import CategoryLoader from '../Loader/Category';
 import useCategories from '@src/hooks/useCategories';
 import { axiosClient, queryClient } from '@src/main';
-import { Box, Container, Select as ChakraSelect, useColorMode } from '@chakra-ui/react';
-import type { Settings } from 'react-slick';
-import type { CategoryModel } from '@src/models/category';
-import type { FilterProps } from "../Filter/Filter";
 import { useMutation } from "@tanstack/react-query";
+import { Box, Container, Select as ChakraSelect, useColorMode } from '@chakra-ui/react';
+import { type Settings } from 'react-slick';
+import { type CategoryModel } from '@src/models/category';
 
-interface CategoryListProps extends FilterProps {
-
-}
-
-export default function CategoryList({ register, getValues, setValue, setLoading }: CategoryListProps) {
+export default function CategoryList() {
   const { categories } = useCategories();
   const { colorMode } = useColorMode();
   const { mutate, isLoading } = useMutation({
@@ -75,8 +70,7 @@ export default function CategoryList({ register, getValues, setValue, setLoading
   if (isLoading) return <CategoryLoader settings={settings} />
   return (
     <Container maxW="80%" mx="auto">
-      <ChakraSelect {...register("category")} onChange={(e) => {
-        setValue("query", "");
+      <ChakraSelect onChange={(e) => {
         mutate(e.target.value);
       }} bg="teal" color="white">
         Select category

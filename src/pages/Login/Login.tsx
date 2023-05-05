@@ -29,10 +29,10 @@ export default function Login() {
   const loginHandler: SubmitHandler<LoginInputs> = async (data) => {
     try {
       const loginResponse: AxiosResponse<LoginResponse> = await axiosClient.post('/auth/login', data)
-      toast.success('Successfully logged in! Redirecting you...')
       localStorage.setItem('readcityuz.token', loginResponse.data.data)
       navigate('/admin');
-      reset()
+      toast.success('Successfully logged in! Redirecting you...')
+      reset();
     } catch (error) {
       toast.error('Email or password is incorrect!')
       console.log(error)

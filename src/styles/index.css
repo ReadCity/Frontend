@@ -180,6 +180,12 @@ html {
   margin-bottom: 0.25rem;
   border-radius: 0.125rem;
 }
+#categoryContainer .slick-list {
+  margin: 0 -5px;
+}
+#categoryContainer .slick-slide > div {
+  padding: 0 5px;
+}
 
 @keyframes loading {
   0% {

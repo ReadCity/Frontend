@@ -22,7 +22,7 @@ const useCart = create<CartState>()(
             const book = state.books.find(book => book.id === id);
             if (book) return { books: state.books };
             return {
-              books: [...state.books, { id }]
+              books: [{ id }, ...state.books]
             }
           });
         },

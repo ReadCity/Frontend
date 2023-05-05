@@ -1,6 +1,6 @@
 import Slider from 'react-slick'
 import { type Settings } from 'react-slick'
-import { Button, Select } from '@chakra-ui/react'
+import { Button, Container, Select } from '@chakra-ui/react'
 
 interface CategoryLoaderProps {
   settings: Settings
@@ -9,13 +9,12 @@ interface CategoryLoaderProps {
 export default function CategoryLoader ({ settings, itemCount = 8 }: CategoryLoaderProps) {
   const itemArray = Array(itemCount).fill('')
   return (
-    // <Slider {...settings}>
-    //   {itemArray.map(() => (
-    //     <Button key={crypto.randomUUID()} letterSpacing="0" rounded="full" fontSize={{ base: 'small', md: 'md' }} className="skeleton" />
-    //   ))}
-    // </Slider>
-    <Select className="skeleton">
-      
-    </Select>
+    <Container maxW="1240px" my="4">
+      <Slider data-carousel="filter" {...settings}>
+        {itemArray.map(() => (
+          <Button key={crypto.randomUUID()} letterSpacing="0" rounded="full" fontSize={{ base: 'small', md: 'md' }} className="skeleton" />
+        ))}
+      </Slider>
+    </Container>
   )
 }

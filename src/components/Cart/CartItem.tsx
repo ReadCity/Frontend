@@ -1,4 +1,4 @@
-import { Card, CardBody, Image, Stack, Text, Heading, CardFooter, ButtonGroup, Button, Link, Divider } from "@chakra-ui/react";
+import { Card, CardBody, Image, Stack, Text, Heading, CardFooter, ButtonGroup, Button, Link, Divider, Box } from "@chakra-ui/react";
 import useOrderDialogStore from "@src/features/order-dialog";
 import { axiosClient, BASE_URL } from "@src/main";
 import type { BookModel } from "@src/models/book";
@@ -21,7 +21,12 @@ export default function CartItem({ id }: { id: BookModel["id"] }) {
   if (isLoading) return <BookLoader />
   return (
     <Card shadow="2xl" maxW="sm">
-      <Image maxW="full" rounded="lg" className="skeleton" src={`${BASE_URL as string}/${book?.image.img as string}`} htmlWidth={300} htmlHeight={300} w="full" h="auto" objectFit="contain" loading="lazy" alt={book?.desc} />
+      <Box w="full" overflow="hidden" px="4">
+        <Image bg="gray.200" p="2" rounded="lg" mt="4" transform={["none", "none", "scale(1.02)"]} cursor="zoom-in" transition="all 500ms ease-in-out" _hover={{
+          transform: 'scale(1.05)'
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        }} className="self-center mx-auto object-fill" src={`${import.meta.env.VITE_BACKEND_URL}/${book?.image?.img}`} fallbackSrc="https://via.placeholder.com/300x300" height={200} loading="lazy" width={200} alt={'Loading'} />
+      </Box>
       <CardBody>
         <Stack mt='6' spacing='3'>
           <Heading as="h3" size="md" fontFamily="Roboto">
@@ -38,12 +43,12 @@ export default function CartItem({ id }: { id: BookModel["id"] }) {
       <Divider />
       <CardFooter>
         <ButtonGroup>
-          <Button onClick={() => {
+          <Button size="sm" onClick={() => {
             toggle();
           }} colorScheme="teal">
             Buy now
           </Button>
-          <Button onClick={() => {
+          <Button size="sm" onClick={() => {
             removeBook(book?.id as number)
           }} colorScheme="red">
             Remove

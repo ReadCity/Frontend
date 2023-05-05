@@ -1,5 +1,4 @@
 
-import CategoryList from '@src/components/CategoryList'
 import CategorySection from '@src/components/CategorySection'
 import ReusableHero from '@src/components/ReusableHero'
 import { Outlet } from 'react-router-dom'

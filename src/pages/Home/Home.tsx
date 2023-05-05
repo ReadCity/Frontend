@@ -1,14 +1,15 @@
 import { Helmet } from 'react-helmet'
 import BookList from '../Book/components/BookList'
-import Filter from '@src/components/Filter/Filter'
+import Hero from "@src/components/Hero"
 export default function Home() {
   return (
     <>
       <Helmet>
         <title>Readcity</title>
-        <meta name="description" content="There are many variations of passages of Lorem Ipsum available, have suffered alteration in some form." />
+        <meta name="description" content="English books" />
       </Helmet>
-      <Filter />
+      
+      <Hero />
       <BookList />
     </>
   )

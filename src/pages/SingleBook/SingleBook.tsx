@@ -104,7 +104,7 @@ export default function SingleBook() {
                                 </Button>
                             </ButtonGroup>
                         </StyledTextContainer>
-                        <Image maxW="full" className="skeleton" src={`${BASE_URL as string}/${book?.image.img}`} width={300} height={500} loading="lazy" alt={book?.desc} />
+                        <Image maxW="full" className="skeleton" src={`${BASE_URL as string}/${book?.image.img}`} rounded="lg" width={400} height={500} loading="lazy" alt={book?.desc} />
                     </StyledTwoCols>
                     <BookOrder bookId={String(id)} />
                 </StyledContainer>

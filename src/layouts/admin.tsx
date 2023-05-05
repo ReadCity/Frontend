@@ -12,7 +12,7 @@ export default function AdminLayout() {
     return (
         <div style={{ scrollPaddingTop: "200px" }}>
             <Header />
-            <main className="mt-[150px]" >
+            <main className="mt-[200px]" >
                 <Dashboard />
                 <StyledContainer>
                     <Outlet />

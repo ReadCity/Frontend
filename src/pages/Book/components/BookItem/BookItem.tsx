@@ -7,7 +7,7 @@ import useCart from "@src/features/cart"
 import { toast } from "react-toastify"
 
 export default function BookItem(props: BookModel) {
-  const { image, title, id, count, } = props;
+  const { image, title, id, count, price } = props;
   const doesBookExist = Number(count) !== 0
   const navigate = useNavigate();
   const { addBook } = useCart();
@@ -21,12 +21,15 @@ export default function BookItem(props: BookModel) {
         }} className="self-center mx-auto object-fill" src={`${import.meta.env.VITE_BACKEND_URL}/${image?.img}`} fallbackSrc="https://via.placeholder.com/300x300" height={200} loading="lazy" width={200} alt={'Loading'} />
       </Box>
       <CardBody>
-        <Flex>
+        <Flex mt="2" direction="column" justify="space-between" h="full" gap="2">
           <Heading colorScheme="telegram" size="sm" as="h3">
             <Link target="blank" fontFamily="Roboto" fontWeight="light" color={useColorModeValue('blackAlpha.900', 'white')} className="limit-text-3" as={RouterLink} to={`/books/${id}`}>
               {title}
             </Link>
           </Heading>
+          <Text>
+            {price} soums
+          </Text>
         </Flex>
         {!doesBookExist ? <Text fontFamily="Roboto" fontWeight="light" pos="absolute" top="0" left="0" bg="red" p="2" borderBottomRightRadius="lg">
           Not available

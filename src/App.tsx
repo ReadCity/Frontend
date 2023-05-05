@@ -9,6 +9,7 @@ import Loader from '@components/Loader'
 import token from './constants/token'
 import Error from '@pages/Error'
 import theme from '@styles/theme'
+import { BooksByCategory } from "./pages/Category"
 const EditBook = lazy(async () => await import("./pages/Admin/Book/EditBook"));
 const OrderTable = lazy(async () => await import('@pages/Admin/AdminTable/tables/Order'))
 const BookTable = lazy(async () => await import('@pages/Admin/AdminTable/tables/Book'))
@@ -18,7 +19,6 @@ const Login = lazy(async () => await import('@pages/Login'))
 const Home = lazy(async () => await import('@pages/Home'))
 const Services = lazy(async () => await import('@pages/Services'))
 const About = lazy(async () => await import('@pages/About/About'))
-const Book = lazy(async () => await import('@pages/Book'))
 const NotFound = lazy(async () => await import('@pages/NotFound'))
 const SingleBook = lazy(async () => await import('@pages/SingleBook'))
 // const BookList = lazy(async () => await import('@pages/Book/components/BookList'))
@@ -45,13 +45,10 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="about" element={<About />} />
                   <Route path="services" element={<Services />} />
-                  <Route path="books" element={<Book />}>
-                    {/* <Route index element={<BookList />} /> */}
-                  </Route>
-                  <Route path="books/query/:query" element={<Search />} />
-                  <Route path="/books/:id" element={<SingleBook />} />
+                  <Route path="/books/query/:query" element={<Search />} />
+                  <Route path="/books/category/:id" element={<BooksByCategory />} />
                   <Route path="/auth/login" element={token ? <Navigate to="/admin" /> : <Login />} />
-                  <Route path="*" element={<NotFound />} />
+                  <Route path="/books/:id" element={<SingleBook />} />
                 </Route>
                 <Route path="/admin" element={token ? <AdminLayout /> : <Navigate to="/auth/login" />}>
                   <Route path="order" element={<OrderTable />} />
@@ -63,6 +60,7 @@ function App() {
                 <Route path="/author/new" element={<AddNewAuthor />} />
                 <Route path="/book/new" element={<AddNewBook />} />
                 <Route path="/category/new" element={<AddNewCategory />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </AnimatePresence>
           </ErrorBoundary>

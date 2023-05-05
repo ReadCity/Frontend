@@ -36,7 +36,7 @@ export function BookListWithProps({ books, isLoading }: { books: BookModel[], is
   return (
     <Box as={motion.section} px="8" pt="12" pb="24" id="books" exit={{ opacity: 0 }} layout>
       <StyledContainer>
-        <Grid as={motion.div} templateColumns={["repeat(auto-fit,min(200px,100%))", "repeat(auto-fit,min(250px,90%))"]} rowGap="4" columnGap="4" layout>
+        <Grid as={motion.div} templateColumns={["repeat(auto-fit,min(200px,100%))", "repeat(auto-fit,min(250px,90%))"]} rowGap="4" columnGap="4" justifyContent="center" layout>
           {books?.map(book => <BookItem key={book.id} {...book} />)}
         </Grid>
 
