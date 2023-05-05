@@ -143,7 +143,6 @@ import BestSellerBooks from "/carousel/bestsellers.png";
 import BestSellerBooks2 from "/carousel/bestsellers_2.webp";
 import BestSellerBooks3 from "/carousel/bestsellers_3.webp";
 import KidsBooks from "/carousel/family-and-friends-1-1.jpg";
-import VocabularyBooks from "/carousel/essential_words.webp";
 
 // Settings for the slider
 const settings: Settings = {
@@ -156,8 +155,8 @@ const settings: Settings = {
   autoplaySpeed: 5000,
   slidesToShow: 4,
   // slidesToScroll: 1,
-  centerMode: true,
-  centerPadding: '100px'
+  // centerMode: true,
+  // centerPadding: '100px'
 };
 
 export default function Carousel() {
@@ -173,7 +172,6 @@ export default function Carousel() {
   // These are the images used in the slide
   const cards = [
     BestSellerBooks,
-    KidsBooks,
     BestSellerBooks2,
     // VocabularyBooks,
     BestSellerBooks3,
