@@ -38,7 +38,7 @@ export function CategoryBooks({ categoryId, title }: CategoryBooksProps) {
           <Heading mb="2" as="h3" color={colorMode === "light" ? "black" : "white"}>
             {title ?? category}
           </Heading>
-          <Grid as={motion.div} templateColumns={["repeat(auto-fit,min(100px,100%))", "repeat(auto-fit,min(150px,100%))", "repeat(auto-fit,min(200px,100%))", "repeat(auto-fit,min(250px,90%))"]} rowGap="4" columnGap="4" layout>
+          <Grid as={motion.div} templateColumns={["repeat(auto-fit,min(200px,100%))", "repeat(auto-fit,min(250px,90%))"]} justifyContent={["center", "center", "unset"]} rowGap="4" columnGap="4" layout>
             {booksByCategory?.map(book => <BookItem key={book.id} {...book} />)}
           </Grid>
         </Container>
