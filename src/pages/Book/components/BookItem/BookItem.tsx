@@ -18,7 +18,7 @@ export default function BookItem(props: BookModel) {
         <Image bg="gray.200" p="2" rounded="lg" mt="4" transform={["none", "none", "scale(1.02)"]} cursor="zoom-in" transition="all 500ms ease-in-out" _hover={{
           transform: 'scale(1.05)'
           // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        }} className="self-center mx-auto object-fill" src={`${import.meta.env.VITE_BACKEND_URL}/${image?.img}`} fallbackSrc="https://via.placeholder.com/300x300" height={200} loading="lazy" width={200} alt={'Loading'} />
+        }} className="self-center mx-auto object-fill" src={`${import.meta.env.VITE_BACKEND_URL}/${image?.img}`} fallbackSrc="https://via.placeholder.com/300x300" height={[100, 100, 200]} loading="lazy" width={200} alt={'Loading'} />
       </Box>
       <CardBody>
         <Flex mt="2" direction="column" justify="space-between" h="full" gap="2">
@@ -28,7 +28,7 @@ export default function BookItem(props: BookModel) {
             </Link>
           </Heading>
           <Text>
-            {price} soums
+            {price} UZS
           </Text>
         </Flex>
         {!doesBookExist ? <Text fontFamily="Roboto" fontWeight="light" pos="absolute" top="0" left="0" bg="red" p="2" borderBottomRightRadius="lg">

@@ -37,6 +37,9 @@ export default function CartItem({ id }: { id: BookModel["id"] }) {
           <Text color='white' fontWeight="light" fontSize='xl'>
             {book?.price} UZS
           </Text>
+          <Text color='white' fontWeight="light" fontSize='xl'>
+            {book?.pages} pages
+          </Text>
           <BookOrder bookId={String(book?.id)} />
         </Stack>
       </CardBody>

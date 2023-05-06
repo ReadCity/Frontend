@@ -24,8 +24,8 @@ export default function RootLayout() {
           base: "none",
           lg: "block"
         }}>
-          <CategoryCarousel />
         </Box>
+        <CategoryCarousel />
         <Outlet />
       </Box>
       <Footer />
