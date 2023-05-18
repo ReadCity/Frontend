@@ -18,7 +18,7 @@ export default function BookItem(props: BookModel) {
         <Image bg="gray.200" p="2" rounded="lg" mt="4" transform={["none", "none", "scale(1.02)"]} cursor="zoom-in" transition="all 500ms ease-in-out" _hover={{
           transform: 'scale(1.05)'
           // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        }} className="self-center mx-auto object-fill" src={`${import.meta.env.VITE_BACKEND_URL}/${image?.img}`} fallbackSrc="https://via.placeholder.com/300x300" htmlHeight={300} loading="lazy" htmlWidth={300} alt={'Loading'} />
+        }} className="self-center mx-auto object-fill" src={`${import.meta.env.VITE_BACKEND_URL}/${image?.img}`} fallbackSrc="https://via.placeholder.com/300x300" htmlHeight={300} loading="lazy" width={250} height={250} htmlWidth={300} alt={'Loading'} />
       </Box>
       <CardBody>
         <Flex mt="2" direction="column" justify="space-between" h="full" gap="2">
