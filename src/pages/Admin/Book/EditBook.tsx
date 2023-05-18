@@ -11,7 +11,7 @@ import { StyledFormInput, StyledFormOption, StyledFormSelect, StyledFormWrapper 
 import { Col2 } from '@src/styles/globals'
 import { BookSchema } from '@src/schemas/book'
 import { type Book } from '@src/interfaces'
-import { axiosAdminClient, axiosClient, BASE_URL } from '@src/main'
+import { axiosAdminClient, axiosClient, BASE_URL, queryClient } from '@src/main'
 import FormInput from '../FormInput/FormInput'
 import useCategories from '@src/hooks/useCategories'
 import useAuthors from '@src/hooks/useAuthors'
@@ -21,6 +21,7 @@ import type { BookModel } from "@src/models/book"
 import { Box, FormControl, Input, Select, Stack } from "@chakra-ui/react"
 
 export default function EditBook() {
+  const [isUpdating, setIsUpdating] = useState<boolean>(false);
   const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm<Book>({
     mode: 'all',
     resolver: zodResolver(BookSchema),
@@ -35,17 +36,24 @@ export default function EditBook() {
       return await (await axiosClient.get("/book/" + String(id))).data.data;
     },
     onSuccess(data) {
-      Object.entries(data).forEach(pair => {
+      async function srcToFile(src: string, fileName: string, mimeType: string) {
+        return (fetch(src)
+          .then(async function (res) { return res.arrayBuffer(); })
+          .then(function (buf) { return new File([buf], fileName, { type: mimeType }); })
+        );
+      }
+      Object.entries(data).forEach(async (pair) => {
         if (pair[0] === "image") {
-          const img = pair[1] as BookModel["image"];
-          const file = new File(['fijRKjhudDjiokDhg1524164151'],
-            `${BASE_URL as string}/${img.img}`,
-            { type: 'image/jpg' });
-          console.log(file);
+          const imgObj = pair[1] as BookModel["image"];
+          const img = new Image(300, 300);
+          img.src = `${import.meta.env.VITE_BACKEND_URL as string}/${imgObj.img}`;
+          const file = await srcToFile(img.src, "file.jpg", "image/jpeg");
           setBookImage(file);
-        };
-        // @ts-ignore
-        setValue(pair[0], pair[1]);
+          setValue("file", file);
+        } else {
+          // @ts-ignore
+          setValue(pair[0], pair[1]);
+        }
       })
     },
   });
@@ -56,14 +64,13 @@ export default function EditBook() {
   const success = (msg: string) => toast.success(msg)
   const fail = (message: string) => toast.error('Xatolik! ' + message)
   const NewBookHandler: SubmitHandler<Book> = async (data) => {
+    setIsUpdating(true);
     try {
       const newData = new FormData()
       Object.entries(data).forEach(item => {
         if (item[0] === 'file') {
           // @ts-expect-error
-          newData.append(item[0], item[1][0])
-          // @ts-expect-error
-          console.log(item[0], item[1][0])
+          newData.append(item[0], item[1])
         } else {
           // @ts-expect-error
           newData.append(item[0], item[1])
@@ -73,9 +80,12 @@ export default function EditBook() {
       success('Book is successfully created!')
       reset()
       setBookImage(undefined)
+      await queryClient.invalidateQueries({ queryKey: ["book", "edit", id] });
     } catch (error: any) {
       console.log(error)
       fail("Iltimos formani to'g'ri to'ldirganingizni yana bir bor tekshiring!")
+    } finally {
+      setIsUpdating(false);
     }
   }
   // useEffect(() => {
@@ -84,7 +94,7 @@ export default function EditBook() {
   return (
     <Col2>
       <AdminImageUploader setAuthorImage={setBookImage} formId="authorForm" Image={bookImage} inputId="bookImage" />
-      <AdminForm id="authorForm" title="Kitobni o'zgartirish" submitHandler={handleSubmit(NewBookHandler)}>
+      <AdminForm isLoading={isUpdating} id="authorForm" title="Kitobni o'zgartirish" submitHandler={handleSubmit(NewBookHandler)}>
         <Stack>
           <FormControl>
             <Input {...register('title')} type="text" placeholder="Kitob nomi" />

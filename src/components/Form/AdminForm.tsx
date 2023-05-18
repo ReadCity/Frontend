@@ -1,9 +1,9 @@
 import { type HTMLProps } from 'react'
 import { StyledAdminFormCloseButton, StyledForm, StyledFormButton, StyledFormInner, StyledFormTitle } from './Form.styles'
-import {  StyledMain } from '@src/styles/globals'
+import { StyledMain } from '@src/styles/globals'
 import { StyledButton } from '@src/styles/components'
 import { useNavigate } from 'react-router-dom'
-import { Box, Button } from "@chakra-ui/react"
+import { Box, Button, Heading } from "@chakra-ui/react"
 
 interface AdminFormProps extends HTMLProps<HTMLFormElement> {
     title: string
@@ -20,9 +20,9 @@ export function AdminForm({ title, children, submitHandler, id, isLoading = fals
                 <Box className="h-full flex items-center">
                     <StyledForm id={id} onSubmit={submitHandler}>
                         <StyledFormInner>
-                            <StyledFormTitle>
+                            <Heading color="teal">
                                 {title}
-                            </StyledFormTitle>
+                            </Heading>
                         </StyledFormInner>
                         {children}
                         <Button isLoading={isLoading} type="submit" mt="4" colorScheme="teal">
