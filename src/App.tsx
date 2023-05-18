@@ -45,12 +45,12 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="about" element={<About />} />
                   <Route path="services" element={<Services />} />
-                  <Route path="/books/query/:query" element={<Search />} />
                   <Route path="/books/category/:id" element={<BooksByCategory />} />
-                  <Route path="/auth/login" element={token ? <Navigate to="/admin" /> : <Login />} />
                   <Route path="/books/:id" element={<SingleBook />} />
+                  <Route path="/books/query/:query" element={<Search />} />
                 </Route>
-                <Route path="/admin" element={token ? <AdminLayout /> : <Navigate to="/auth/login" />}>
+                <Route path="/auth/login" element={token ? <Navigate to="/admin" /> : <Login />} />
+                <Route path="/admin" element={localStorage.getItem("readcityuz.token") ? <AdminLayout /> : <Navigate to="/auth/login" />}>
                   <Route path="order" element={<OrderTable />} />
                   <Route path="book" element={<BookTable />} />
                   <Route path="author" element={<AuthorTable />} />

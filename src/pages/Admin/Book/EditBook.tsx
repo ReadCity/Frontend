@@ -11,7 +11,7 @@ import { StyledFormInput, StyledFormOption, StyledFormSelect, StyledFormWrapper 
 import { Col2 } from '@src/styles/globals'
 import { BookSchema } from '@src/schemas/book'
 import { type Book } from '@src/interfaces'
-import { axiosAdminClient, axiosClient } from '@src/main'
+import { axiosAdminClient, axiosClient, BASE_URL } from '@src/main'
 import FormInput from '../FormInput/FormInput'
 import useCategories from '@src/hooks/useCategories'
 import useAuthors from '@src/hooks/useAuthors'
@@ -36,10 +36,14 @@ export default function EditBook() {
     },
     onSuccess(data) {
       Object.entries(data).forEach(pair => {
-        console.log(pair);
-
-        // @ts-ignore
-        if (pair === "image") return;
+        if (pair[0] === "image") {
+          const img = pair[1] as BookModel["image"];
+          const file = new File(['fijRKjhudDjiokDhg1524164151'],
+            `${BASE_URL as string}/${img.img}`,
+            { type: 'image/jpg' });
+          console.log(file);
+          setBookImage(file);
+        };
         // @ts-ignore
         setValue(pair[0], pair[1]);
       })

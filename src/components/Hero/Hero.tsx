@@ -71,14 +71,12 @@ export default function Carousel() {
           onClick={() => slider?.slickNext()}>
           <BiRightArrowAlt />
         </IconButton>
-        {/* Slider */}
-        {/* Slider */}
         <Slider {...settings} ref={(slider) => { setSlider(slider); }}>
           {cards.map((url, index) => (
             <Box
               key={crypto.randomUUID()}
               rounded="2xl"
-              h="6xl"
+              h="40vh"
               maxH="40vh"
               position="relative"
               backgroundRepeat="no-repeat"

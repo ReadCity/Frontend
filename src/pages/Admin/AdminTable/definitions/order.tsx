@@ -1,11 +1,13 @@
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
+import { Link } from "@chakra-ui/react"
+import { Link as RouterLink } from "react-router-dom";
 import { axiosAdminClient, queryClient } from '@src/main'
-import { type OrderModel } from '@src/models/order'
+import { type ExtendedOrder } from '@src/models/order'
 import { useMutation } from '@tanstack/react-query'
 import { createColumnHelper } from '@tanstack/react-table'
 import { toast } from 'react-toastify'
 
-const columnHelper = createColumnHelper<OrderModel>()
+const columnHelper = createColumnHelper<ExtendedOrder>()
 
 const orderColsDef = [
 
@@ -17,6 +19,13 @@ const orderColsDef = [
   }),
   columnHelper.accessor('phone', {
     cell: (info) => info.row.original.phone
+  }),
+  columnHelper.accessor('book.title', {
+    cell: (info) => {
+      return <Link target="_blank" to={`/books/${info.row.original.book.id}`} as={RouterLink}>
+        {info.row.original.book.title}
+      </Link>
+    }
   }),
 
   columnHelper.display({

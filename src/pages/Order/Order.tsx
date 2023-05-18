@@ -30,7 +30,7 @@ export default function BookOrder({ bookId }: { bookId: Order['bookId'] }) {
     try {
       await mutateAsync(data)
       toast.success('Success! We will contact you soon!')
-      onClose();
+      toggle();
       reset();
     } catch (error) {
       toast.error('Failed!')
@@ -41,7 +41,7 @@ export default function BookOrder({ bookId }: { bookId: Order['bookId'] }) {
       <Modal isOpen={showModal} onClose={onClose} isCentered>
         <ModalOverlay />
         <ModalContent>
-          <Box as="form" onSubmit={handleSubmit(orderHandler)} className="grid gap-3" style={{ padding: 0 }}>
+          <Box method="dialog" as="form" onSubmit={handleSubmit(orderHandler)} className="grid gap-3" style={{ padding: 0 }}>
 
             <ModalHeader>Fill in the form</ModalHeader>
             <ModalCloseButton onClick={toggle} />

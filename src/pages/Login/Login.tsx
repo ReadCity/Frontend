@@ -2,7 +2,7 @@
 import { Box, Button, FormControl, FormErrorMessage, FormLabel, Heading, Input } from "@chakra-ui/react"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { axiosClient } from '@src/main'
-import axios, { type AxiosResponse } from 'axios'
+import { type AxiosResponse } from 'axios'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
@@ -22,7 +22,7 @@ interface LoginResponse {
 
 export default function Login() {
   const navigate = useNavigate()
-  const { register, reset, handleSubmit, formState: { errors, isValid } } = useForm<LoginInputs>({
+  const { register, reset, handleSubmit, formState: { errors } } = useForm<LoginInputs>({
     mode: 'all',
     resolver: zodResolver(loginSchema)
   })
@@ -31,6 +31,7 @@ export default function Login() {
       const loginResponse: AxiosResponse<LoginResponse> = await axiosClient.post('/auth/login', data)
       localStorage.setItem('readcityuz.token', loginResponse.data.data)
       navigate('/admin');
+      location.href = "/admin";
       toast.success('Successfully logged in! Redirecting you...')
       reset();
     } catch (error) {
