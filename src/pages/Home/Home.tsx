@@ -10,10 +10,10 @@ export default function Home() {
         <meta name="description" content="English books" />
       </Helmet>
       <Hero />
-      <CategoryBooks categoryId={11} title="Special for kids" />
-      <CategoryBooks categoryId={3} title="SAT" />
-      <CategoryBooks categoryId={4} title="IELTS" />
-      <CategoryBooks categoryId={9} title="Self-help" />
+      {/* <CategoryBooks categoryId={11} title="Special for kids" /> */}
+      <CategoryBooks categoryId={9} title="Popular" />
+      {/* <CategoryBooks categoryId={3} title="SAT" /> */}
+      {/* <CategoryBooks categoryId={4} title="IELTS" /> */}
       <BookList title="All" />
 
     </>

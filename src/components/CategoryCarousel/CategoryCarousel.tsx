@@ -57,7 +57,7 @@ export default function CategoryCarousel() {
   }
   if (categories.length > 1) {
     return (
-      <Container id="categoryContainer" maxW="80%" mt="4" mb="8" mx="auto">
+      <Container id="categoryContainer" maxW="1240px" mt="4" mb="8" mx="auto">
         <Slider data-carousel="filter" {...settings}>
           {categories.map(category => (
             <Button isActive={params?.id as string === String(category.id)} h="unset" variant="solid" fontSize={{ base: 'small', md: 'lg' }} onClick={() => {

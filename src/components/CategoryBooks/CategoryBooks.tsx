@@ -19,7 +19,8 @@ export function CategoryBooks({ categoryId, title }: CategoryBooksProps) {
     queryFn: async (): Promise<BookModel[]> => {
       const data = (await axiosClient.get('/category/' + String(categoryId)));
       setCategory(data.data.data.name);
-      return data.data.data.books;
+      const returnData = data.data.data.books as BookModel[];
+      return returnData.slice(0, 10);
     },
 
   });
