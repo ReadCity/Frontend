@@ -59,7 +59,7 @@ export default function BookList({ title }: BookListProps) {
             previousLinkClassName="text-lg text-teal-600"
             nextLinkClassName="text-lg text-teal-600"
             forcePage={activePage - 1}
-            pageLinkClassName={`px-2 py-[4px] rounded-[5px] ${colorMode === "dark" ? "bg-white" : "bg-black"}`}
+            pageLinkClassName={`px-2 py-[4px] rounded-[5px] ${colorMode === "dark" ? "bg-[#fff]" : "bg-black"}`}
             activeLinkClassName="bg-teal-800 text-white"
             renderOnZeroPageCount={null}
           />
